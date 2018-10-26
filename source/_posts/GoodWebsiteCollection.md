@@ -32,6 +32,8 @@ title: 链接收藏
 1. 简明现代魔法:&ensp;[http://www.nowamagic.net/](http://www.nowamagic.net/)
 
 2. CSDN:&ensp;[https://www.csdn.net/](https://www.csdn.net/)
+
+3. Exp技术分享博客:&ensp;[http://exp-blog.com/](http://exp-blog.com/)
 ---
 
 # <font size=4>Linux</font>
@@ -96,3 +98,12 @@ https://www.cnblogs.com/Neo007/p/7501625.html
 
 12. 打开git bash时出现闪退
 https://blog.csdn.net/qq_34400736/article/details/72627343
+
+13. Linux下安装jdk
+https://www.linuxidc.com/Linux/2015-01/112030.htm
+
+14. Linux之间互传文件
+https://blog.csdn.net/qq_30968657/article/details/72912070
+
+15. 北大ACM-POJ试题分类
+http://exp-blog.com/2018/06/28/pid-38/

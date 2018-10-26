@@ -15,7 +15,7 @@ title: github搭建自己的博客步骤
 4.安装nodejs：curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 sudo apt-get install -y nodejs
 5.安装npm：sudo apt-get install npm
-6.安装hexo：sudo npm install hexo-cli -g
+6.安装hexo：sudo npm install hexo-cli -g(npm install)
 7.初始化hexo：hexo init
 安装一些插件：
 
