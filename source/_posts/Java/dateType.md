@@ -22,5 +22,9 @@ double x = 3.0 / 2;   //x的值为1.0
 ```
 ******
 
+4. 数字格式化
+double b = 3.150;
+NumberFormat nf = NumberFormat.getInstance();
+nf.format(b);  //3.15
 
 

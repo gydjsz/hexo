@@ -55,6 +55,8 @@ title: 链接收藏
 
 6. 多平台音乐在线播放: http://music.lkxin.cn/
 
+7. 在线打字网站：https://www.typingclub.com/
+                 https://www.typing.com/
 ---
 
 # <font size=4>好的技术博文</font>
