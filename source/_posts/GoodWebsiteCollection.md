@@ -3,8 +3,15 @@ title: 链接收藏
 ---
 
 # <font size=4>下载链接</font>
-1. putty下载:&ensp;[https://pan.baidu.com/s/1X_IITIlSP5u_wnKPiOL-oA](https://pan.baidu.com/s/1X_IITIlSP5u_wnKPiOL-oA)     &ensp;&ensp;&ensp; 密码：8of8
+1. putty下载:&ensp;[https://pan.baidu.com/s/1X_IITIlSP5u_wnKPiOL-oA](https://pan.baidu.com/s/1X_IITIlSP5u_wnKPiOL-oA)    
+&ensp;&ensp;&ensp; 提取码：8of8
 ---
+
+2. xshell下载链接：https://pan.baidu.com/s/1qb_wYdU3S-9s3dpBzIMCoQ 
+&ensp;&ensp;&ensp; 提取码：r2x7 
+
+3. xsel下载链接：链接：https://pan.baidu.com/s/1JY269KghMzMvCLgy1_XlwQ 
+&ensp;&ensp;&ensp; 提取码：opml 
 
 # <font size=4>编程练习</font>
 1. PTA:&ensp;[https://pintia.cn/](https://pintia.cn/)
@@ -56,7 +63,7 @@ title: 链接收藏
 6. 多平台音乐在线播放: http://music.lkxin.cn/
 
 7. 在线打字网站：https://www.typingclub.com/
-                 https://www.typing.com/
+                 &ensp;https://www.typing.com/
 ---
 
 # <font size=4>好的技术博文</font>
