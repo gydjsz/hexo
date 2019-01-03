@@ -7,9 +7,10 @@ jd-gui反编译工具链接: https://pan.baidu.com/s/1v0a6asCluIgqeswpR515ww  &e
 
 该题库软件支持jdk1.8版本
 
-1. 下载完成之后，打开cmd命令行窗口，在该软件目录下的jar/bin/中执行:
+1. 下载完成之后，将jd-gui-1.4.0.jar放置在该软件目录下的jar/bin/中,打开cmd命令行窗口，再执行:
 ./java.exe -jar jd-gui-1.4.0.jar，即可打开反编译的软件
-![](../../picture/questionExport.png)
+
+![](https://raw.githubusercontent.com/gydjsz/hexo/master/source/picture/questionExport.png)
 
 通过反编译可以查看Tiku.jar中的内容，发现对象流指向的输出流对象是Problem类,这样我们可以先将题库中的内容提取出来,然后转型为ArrayList<Problem>,之后就可以通过循环将文件内容输入到文本中。这里为了保持目录的一致性，可以先用数组存储每一个章节题目的位置信息，按照章节来将题库导出，File类中有mkdir()方法，可以创建目录，使用write()方法可以写入内容,由于将题目写入txt文本中之后,格式并不太友好,我这里使用缓冲流，因为里面有newline()方法，可以添加空行。我将ArrayList中的内容遍历，如果是'\n'则使用newline()添加空行，这样使得文本内容更易于查看.
 
