@@ -64,6 +64,8 @@ title: 链接收藏
 
 7. 在线打字网站：https://www.typingclub.com/
                  &ensp;https://www.typing.com/
+
+8. https://paste.ubuntu.com/
 ---
 
 # <font size=4>好的技术博文</font>
