@@ -62,10 +62,11 @@ title: 链接收藏
 
 6. 多平台音乐在线播放: http://music.lkxin.cn/
 
-7. 在线打字网站：https://www.typingclub.com/
-                 &ensp;https://www.typing.com/
+7. 在线打字网站1: https://www.typingclub.com/
+   在线打字网站2: https://www.typing.com/
 
 8. https://paste.ubuntu.com/
+![](https://github.com/gydjsz/hexo/blob/master/source/picture/ubuntu.png?raw=true)
 ---
 
 # <font size=4>好的技术博文</font>
