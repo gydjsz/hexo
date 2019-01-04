@@ -8,7 +8,7 @@ jd-gui反编译工具链接: https://pan.baidu.com/s/1v0a6asCluIgqeswpR515ww  &e
 该题库软件支持jdk1.8版本
 
 1. 下载完成之后，将jd-gui-1.4.0.jar放置在该软件目录下的jar/bin/中,打开cmd命令行窗口，再执行:
-./java.exe -jar jd-gui-1.4.0.jar，即可打开反编译的软件
+java.exe -jar jd-gui-1.4.0.jar，即可打开反编译的软件
 
 ![](https://raw.githubusercontent.com/gydjsz/hexo/master/source/picture/questionExport.png)
 
