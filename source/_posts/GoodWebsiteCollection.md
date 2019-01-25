@@ -65,8 +65,10 @@ title: 链接收藏
 7. 在线打字网站1: https://www.typingclub.com/
    在线打字网站2: https://www.typing.com/
 
-8. https://paste.ubuntu.com/
+8. 代码共享：https://paste.ubuntu.com/
 ![](https://github.com/gydjsz/hexo/blob/master/source/picture/ubuntu.png?raw=true)
+
+9. 工具网站：http://www.bejson.com/
 ---
 
 # <font size=4>好的技术博文</font>
