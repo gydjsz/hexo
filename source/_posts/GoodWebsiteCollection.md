@@ -69,6 +69,10 @@ title: 链接收藏
 ![](https://github.com/gydjsz/hexo/blob/master/source/picture/ubuntu.png?raw=true)
 
 9. 工具网站：http://www.bejson.com/
+
+10. 图片托管：https://miao.su/
+
+11. 多种语言在线编译器：http://www.dooccn.com/cpp/
 ---
 
 # <font size=4>好的技术博文</font>

@@ -220,4 +220,4 @@ public class GameUtil {
 Image image = GameUtil.getImage(路径);
 ```
 
-最后附上我的源码: git@github.com:gydjsz/TankGame.git
+最后附上我的源码: [https://github.com/gydjsz/TankGame.git](https://github.com/gydjsz/TankGame.git)

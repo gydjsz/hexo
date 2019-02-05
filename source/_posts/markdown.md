@@ -8,14 +8,20 @@ title: markdown语法学习
 [markdown插入图片]https://blog.csdn.net/slaughterdevil/article/details/79255933
 [添加百度云图片链接]https://jingyan.baidu.com/article/f006222806dfdcfbd3f0c880.html
 
-# <font size = 3>插入跳转链接</font>
+目录：
+1. [插入跳转链接](#1)
+2. [缩进](#2)
+3. [插入图片](#3)
+4. [添加页内跳转](#4)
+
+# <span id = "1"> <font size = 3>1.插入跳转链接</font></span>
 <a href="https://blog.fbzl.org/" target="_blank">https://blog.fbzl.org/"</a>
 ```
 <a href="https://blog.fbzl.org/" target="_blank">https://blog.fbzl.org/"</a>
 ```
 ******
 
-# <font size = 3>缩进</font>
+# <span id = "2"><font size = 3>2.缩进</font></span>
 在每一行开头的时候，先输入下面的代码，然后紧跟着输入文本即可。注意有分号
 ```
 半角空格: &ensp;或 &#8194;
@@ -24,7 +30,7 @@ title: markdown语法学习
 ```
 ******
 
-# <font size=3>插入图片</font>
+# <span id = "3"><font size=3>3.插入图片</font></span>
 
 首先插入本地图片的地址不是绝对路径,比如说我图片的绝对路径为~/Picture/picture1.jpg
 我写博客的位置是~/Documents/blog,那么添加的图片路径是相对路径,即从我当前路径开始算起,
@@ -67,3 +73,9 @@ title: markdown语法学习
 二. <font size=3>**使用github添加图片外链**</font>
 1. 先将图片上传到github中
 2. 在github中打开图片，复制图片链接
+
+# <span id="4"><font size=3>4.添加页内跳转</font></span>
+```
+[跳转到标题](#1)
+<span id="1">标题</span>
+```

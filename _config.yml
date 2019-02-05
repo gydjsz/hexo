@@ -35,8 +35,8 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
-relative_link: false
+post_asset_folder: true 
+relative_link: true 
 future: true
 highlight:
   enable: true
@@ -87,3 +87,20 @@ server:
   compress: true
   header: true
 
+
+live2d:
+  enable: true
+  scriptFrom: local
+  pluginRootPath: live2dw/
+  pluginJsPath: lib/
+  pluginModelPath: assets/
+  tagMode: false
+  debug: false
+  model:
+    use: live2d-widget-model-poi 
+  display:
+    position: right
+    width: 160   #160  168
+    height: 168
+  mobile:
+    show: true
