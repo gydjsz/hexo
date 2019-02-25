@@ -1,8 +1,8 @@
 ---
-title: STL模板库学习笔记
+title: 一、STL容器篇
 photo: https://miao.su/images/2019/02/05/095b2b39b.png
 ---
-[![](https://miao.su/images/2019/02/05/095b2b39b.png)](https://hexo.io/themes/)
+![](https://miao.su/images/2019/02/05/095b2b39b.png)
 <!--more-->
 
 <font size = 4 color = "#00F5FF">

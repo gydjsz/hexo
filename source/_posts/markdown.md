@@ -13,6 +13,7 @@ title: markdown语法学习
 2. [缩进](#2)
 3. [插入图片](#3)
 4. [添加页内跳转](#4)
+5. [文章摘要显示](#5)
 
 # <span id = "1"> <font size = 3>1.插入跳转链接</font></span>
 <a href="https://blog.fbzl.org/" target="_blank">https://blog.fbzl.org/"</a>
@@ -78,4 +79,10 @@ title: markdown语法学习
 ```
 [跳转到标题](#1)
 <span id="1">标题</span>
+```
+
+# <span id="5"><font size=3>5.文章摘要显示</font></span>
+```
+摘要文字部分
+<!--more-->
 ```
