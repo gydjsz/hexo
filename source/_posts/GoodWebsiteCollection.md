@@ -25,6 +25,8 @@ title: 链接收藏
 5. TMaD OJ:&ensp;[http://tmad.ctguqmx.com/](http://tmad.ctguqmx.com/)
 
 6. 编程网站(全):https://vjudge.net/
+
+7. leetcode: https://leetcode-cn.com/
 ---
 
 # <font size=4>编程学习</font>
@@ -125,3 +127,6 @@ https://blog.csdn.net/qq_30968657/article/details/72912070
 
 15. 北大ACM-POJ试题分类
 http://exp-blog.com/2018/06/28/pid-38/
+
+16. git恢复误删的分支
+https://www.cnblogs.com/xd502djj/p/9319980.html

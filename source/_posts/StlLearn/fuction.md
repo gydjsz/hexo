@@ -32,4 +32,30 @@ int kth(){
 }
 ```
 
+3. to_string(): 将数字转化为字符串
+```cpp
+string s = to_string(123);   // s = "123"
+```
+
+使用stringstream字符串流来实现转换
+```cpp
+#include <sstream>   //头文件sstream
+
+//int 转 string
+int n = 123;
+stringstream ss;
+ss << n;
+string s;
+ss >> s;
+cout << s << endl;   //s = "123"
+
+ss.clear();   //同一个stream多次转换应该调用clear()方法
+
+//string 转 int
+s = "2233";
+ss << s;
+ss >> n;
+cout << n << endl;   //n = 2233
+```
+
 
