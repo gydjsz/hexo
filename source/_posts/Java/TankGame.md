@@ -1,23 +1,26 @@
 ---
 title: 坦克大战
 ---
-# 一、前言：
+
+## 一、前言：
 整个坦克大战游戏做的比较匆忙的，里面也有很多的bug，代码也写得比较乱，整理博客的时候也不太好整理，本想优化一下下，可是由于整个项目结构的缘故，只能到这一步了，这次算是有了很多的经验，相信下次再做的时候，应该会好得多。
 
-# 二、主体介绍
+## 二、主体介绍
 游戏结构主要有游戏面板、设置面板、菜单栏、坦克、子弹以及提升属性的物品
 
-## 玩法规则
+### 玩法规则
 1. 我方坦克将敌方坦克打完，就算获胜
 2. 敌方坦克将我方坦克击败三次以及基地被摧毁，就算失败
 3. 打掉草地以及击败敌方坦克均会掉落物品，捡到后能提升属性值
 
-# 三、代码实现
-<img src="https://raw.githubusercontent.com/gydjsz/hexo/master/images/start.png" />
-一、游戏面板
+## 三、代码实现
+
+<img src="https://raw.githubusercontent.com/gydjsz/TankGame/master/picture/1.jpg" width="50%" height="50%"/>
+
+### 游戏面板
 1. 游戏的开始面板将背景的图片，以及文字信息放了上去。这里由于出现了双缓冲技术，就在这里简单地说一下。
 
-## “双缓冲技术”的绘图过程如下
+#### “双缓冲技术”的绘图过程如下
 1. 在内存中创建与画布一致的缓冲区
 
 2. 在缓冲区画图
@@ -94,8 +97,10 @@ public void mousegCliked(MouseEvent e){
 然后如果是点击游戏设置，那么就直接将该面板设置为可见
 
 
-二、游戏设置窗口
-<img src="https://raw.githubusercontent.com/gydjsz/hexo/master/images/set.png" />
+### 游戏设置窗口
+
+<img src="https://raw.githubusercontent.com/gydjsz/TankGame/master/picture/2.jpg" width="50%" height="50%"/>
+
 里面使用几个组件：
 1. JLabel: 标签
 2. JRadioButton: 单选按钮
@@ -123,9 +128,11 @@ jTextField.setEditable(true);  //设置文本不可更改
 jDialog.setModalityType(ModalityType.APPLICATION_MODAL);  //设置该窗口打开后将其它窗口锁住
 ```
 
-三、坦克大战的主面板
-<img src="https://raw.githubusercontent.com/gydjsz/hexo/master/images/fight.png" />
-<img src="https://raw.githubusercontent.com/gydjsz/hexo/master/images/final.png" />
+### 坦克大战的主面板
+
+<img src="https://raw.githubusercontent.com/gydjsz/TankGame/master/picture/3.jpg" width="50%" height="50%"/>
+<img src="https://raw.githubusercontent.com/gydjsz/TankGame/master/picture/5.jpg" width="50%" height="50%"/>
+
 1. 这个是游戏的主体，包含地图的绘制、显示所有坦克的移动和子弹发射的轨迹、物品掉落、游戏信息面板，坦克死亡、基地破坏的判定;
 2. 由于所有的地图、坦克、子弹都已经放在了各自的ArrayList容器之中，所以在paint方法之中就只需遍历容器中的每一个值，然后将里面的内容绘制在屏幕上。
 
@@ -148,8 +155,10 @@ startTime = System.currentTimeMillis();
 setEnd.endTime = System.currentTimeMillis();
 setEnd.time = setEnd.endTime - setEnd.startTime;
 
-四、菜单
-<img src="https://raw.githubusercontent.com/gydjsz/hexo/master/images/menu.png" />
+### 菜单
+
+<img src="https://raw.githubusercontent.com/gydjsz/TankGame/master/picture/4.jpg" width="50%" height="50%"/>
+
 功能: 回到主面板、重新开始游戏、暂停游戏、恢复、退出游戏
 
 1. 回到主面板
@@ -167,7 +176,7 @@ setEnd.time = setEnd.endTime - setEnd.startTime;
 5. 退出游戏
 System.exit(0);
 
-五、坦克设置
+## 坦克设置
 1. 坦克的属性有坐标、方向、速度、是否存活、生命值、攻击力等
 这里速度可以直接设置坐标的改变量，然后也可以设置执行线程的时间，线程中有sleep()方法和坦克坐标移动的方法，避免由于线程执行太快而设置了线程暂停的时间，将时间缩短也可以提高速度
 
@@ -192,8 +201,8 @@ Random random = new Random();
 int n = random.nextInt(4);   //随机数[0,3)
 ```
 
-六、图片的插入
-这里使用了GameUtil类，使用这个类比较容易添加图片，这个是网上找的，自己不太会写
+## 图片的插入
+这里使用了GameUtil类，使用这个类比较容易添加图片
 
 ```java
 public class GameUtil {
@@ -219,5 +228,3 @@ public class GameUtil {
 ```java
 Image image = GameUtil.getImage(路径);
 ```
-
-最后附上我的源码: [https://github.com/gydjsz/TankGame.git](https://github.com/gydjsz/TankGame.git)
