@@ -10,6 +10,7 @@ print(name)           #输出Hello, World
 print(name.upper())   #输出HELLO, WORLd   (将字符串中的所有字母转化为大写)
 print(name.lower())   #输出hello, world   (将字符串中的所有字母转化为小写)
 ```
+<!--more-->
 
 **注释**
 ```python

@@ -7,6 +7,7 @@ setLocation(int x, int y); //设置窗口位置
 setSize(int width, int height);   //设置窗口宽和高
 setVisible(true);   //设置窗口可见,默认为flase,这个方法放在setLocation()和setSize后面较好,我放在前面窗口为黑色,本来默认为白色的
 
+<!--more-->
 ******
 
 <font size=3>**paint方法画图**</font>   

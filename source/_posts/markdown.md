@@ -7,6 +7,7 @@ title: markdown语法学习
 [先来一头马克飞象(在线使用markdown)]https://maxiang.io/
 [markdown插入图片]https://blog.csdn.net/slaughterdevil/article/details/79255933
 [添加百度云图片链接]https://jingyan.baidu.com/article/f006222806dfdcfbd3f0c880.html
+<!--more-->
 
 目录：
 1. [插入跳转链接](#1)

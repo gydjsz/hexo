@@ -7,6 +7,7 @@ title: matlab学习
 2. close all   清除所有窗口
 
 3. warning off   关闭警告
+<!--more-->
 
 4. fprintf('result: %d', a); 输出a的值
 

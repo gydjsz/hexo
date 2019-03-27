@@ -3,7 +3,7 @@ title: vim快捷键
 ---
 [参考链接]https://www.cnblogs.com/jy02414216/archive/2012/10/29/2745001.html
 [参考链接]https://blog.csdn.net/scaleqiao/article/details/45153379
-
+<!--more-->
 <font size=3>**VIM光标跳转**</font>
 
 h, j, k, l :左, 下, 上, 右

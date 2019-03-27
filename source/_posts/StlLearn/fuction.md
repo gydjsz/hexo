@@ -2,6 +2,11 @@
 title: 二、STL算法篇
 ---
 
+//去掉对c输入输出的兼容，加快c++速度
+std::ios::sync_with_stdio(false);
+cin.tie(NULL);
+<!--more-->
+
 1. next_permutation(): 按照字典顺序产生区间内元素下一个较大的排列组合
    prev_permutation(): 按照字典顺序产生区间内元素下一个较小的排列组合
 ```cpp
@@ -58,4 +63,4 @@ ss >> n;
 cout << n << endl;   //n = 2233
 ```
 
-
+4. bitset

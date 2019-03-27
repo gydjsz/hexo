@@ -2,6 +2,7 @@
 title: github搭建自己的博客步骤
 ---
 先在github上注册账号，新建一个仓库，仓库名为用户名.github.io
+<!--more-->
 
 1.安装git：sudo apt-get install git
 2.git安装完成之后设置基本信息

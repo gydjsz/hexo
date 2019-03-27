@@ -8,6 +8,7 @@ title: java基本数据类型
 char c = input.nextLine().toLowerCase().toCharArray()[0];
 ```
 ******
+<!--more-->
 
 2. float类型常量后面必须要有后缀f或F
 double类型后面有后缀d或D,但是可以省略

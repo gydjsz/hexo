@@ -3,7 +3,7 @@ title: 为emacs添加源
 ---
 参考链接:https://blog.csdn.net/sjhuangx/article/details/51252522
 参考链接:https://blog.csdn.net/watanuki2006/article/details/52122427
-
+<!--more-->
 * 方法1 
 emacs中输入M-x customize-variable RET package-archives，
 进入之后可以看到当前的package源，

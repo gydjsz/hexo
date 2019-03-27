@@ -3,6 +3,7 @@ title: 远程登陆linux系统
 ---
 1. 开通ssh服务
 sudo apt-get install openssh-server
+<!--more-->
 
 2. 启用ssh-server服务
 默认安装之后就开启，可以通过ps -e |grep ssh查看，出现sshd就说明启动了

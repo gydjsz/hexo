@@ -2,6 +2,19 @@
 title: 数据库使用笔记
 ---
 
+停止，启动，重启SQL server服务
+<!--more-->
+
+命令：sudo systemctl stop mssql-server     或  service mssql-server stop
+                                             
+命令：sudo systemctl start mssql-server    或  service mssql-server start
+                                             
+命令：sudo systemctl restart mssql-server  或  service mssql-server restart 
+
+移除mssqlserver开机自动启动服务
+update-rc.d -f mssql-server remove
+
+
 1. \ld : 查看所有数据库
 
 2. \lt : 列出所有表

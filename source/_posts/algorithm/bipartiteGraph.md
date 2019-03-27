@@ -5,6 +5,7 @@ title: 二分图
 https://baike.baidu.com/item/%E4%BA%8C%E5%88%86%E5%9B%BE/9089095?fr=aladdin
 https://blog.csdn.net/sixdaycoder/article/details/47720471
 http://blog.jobbole.com/106084/
+<!--more-->
 
 **几个概念**
 

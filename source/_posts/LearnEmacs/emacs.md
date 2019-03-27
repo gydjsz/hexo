@@ -1,6 +1,8 @@
 ---
 title: emacs配置
 ---
+这个配置有点乱，但是先放这里
+<!--more-->
 (require 'package)
 (package-initialize)
 (add-to-list'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)

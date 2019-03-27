@@ -10,6 +10,7 @@ title: Linux下的技巧操作
    j -d[权重]: 减少权值
    jo path: 打开目录
    j -s: 显示自动跳转数据库中的条目
+<!--more-->
 
 2. xsel: 建立终端和剪切板之间的通道
    cat txt | xsel -b -i: 将txt文件中的内容复制到xsel中
@@ -31,3 +32,7 @@ index-url = https://pypi.tuna.tsinghua.edu.cn/simple
 [install]
 trusted-host=mirrors.aliyun.com
 ```
+
+3. 查看服务状态
+service --status-all  查看所有的服务状态
+service xx status     查看xx的服务状态

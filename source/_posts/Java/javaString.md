@@ -6,6 +6,7 @@ title: String类
 String s = "hello";  //s.charAt(0) = h
 ```
 ******
+<!--more-->
 
 2. 产生随机数
 ```java

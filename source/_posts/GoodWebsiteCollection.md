@@ -1,6 +1,8 @@
 ﻿---
 title: 链接收藏
 ---
+收藏一些有用的链接
+<!--more-->
 
 # <font size=4>下载链接</font>
 1. putty下载:&ensp;[https://pan.baidu.com/s/1X_IITIlSP5u_wnKPiOL-oA](https://pan.baidu.com/s/1X_IITIlSP5u_wnKPiOL-oA)    

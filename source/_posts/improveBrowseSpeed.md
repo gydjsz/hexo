@@ -2,6 +2,7 @@
 title: 加快github和firefox扩展页面访问速度
 ---
 访问https://www.ipaddress.com，拉下来，找到页面中下方的“IP Address Tools – Quick Links”
+<!--more-->
 分别输入github.global.ssl.fastly.net和github.com，查询ip地址
 修改本地hosts文件
 

@@ -1,10 +1,14 @@
 ---
 title: linux终端下实现有道翻译
 ---
-[参考链接1]https://blog.csdn.net/jiangxiaoma111/article/details/38461447
-[参考链接2]https://blog.csdn.net/Naruto_____/article/details/47400003
+[参考链接1](https://blog.csdn.net/jiangxiaoma111/article/details/38461447)
+[参考链接2](https://blog.csdn.net/Naruto_____/article/details/47400003)
+
+<!--more-->
+
 1. 有道翻译的代码如下
 先将此代码复制到一个文件里面，并将这个文件放到～/Documents下，命名为youdao.py
+
 
 版本一
 ```python

@@ -19,7 +19,7 @@ Plugin 'w0rp/ale'
 call vundle#end()
 filetype plugin indent on
 " ----------------------------- Vundle End   -----------------------------
-
+<!--more-->
 
 " 开启语法高亮
 syntax on
