@@ -66,3 +66,10 @@ _ :代表任意单个字符
  OPENROWSET('MICROSOFT.JET.OLEDB.4.0'
  ,'Excel 5.0;HDR=YES;DATABASE=c:\test.xls',sheet1$)
 
+17. YEAR(日期);  :获得日期的年份
+
+18. ORDER BY []  ASC/DESC;  :升序/降序
+
+19. SELECT TOP 10 PERCENT * FROM Student;  :查询前10%的数据
+
+20. DATEDIFF(day, 起始日期, 终止日期);   :获得两时间差
