@@ -180,11 +180,9 @@ map <F2> :call SetTitle()<CR>
 func SetTitle()
 let l = 0
 
-"let l = l + 1 | call setline(l,'/* ***********************************************')
 "let l = l + 1 | call setline(l,'Author        :herongwei')
 "let l = l + 1 | call setline(l,'Created Time  :'.strftime('%c'))
 "let l = l + 1 | call setline(l,'File Name     :'.expand('%'))
-"let l = l + 1 | call setline(l,'************************************************ */')
 "let l = l + 1 | call setline(l,'')
 
 "let l = l + 1 | call setline(l,'#include <cstdio>')
