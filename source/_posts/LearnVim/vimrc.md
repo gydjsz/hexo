@@ -10,8 +10,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 "目录树
 Plugin 'The-NERD-tree'
-"代码浏览
-Plugin 'taglist.vim'
 "代码补全
 Bundle 'Valloric/YouCompleteMe'
 "异步语法检查
@@ -19,7 +17,7 @@ Plugin 'w0rp/ale'
 call vundle#end()
 filetype plugin indent on
 " ----------------------------- Vundle End   -----------------------------
-<!--more-->
+
 
 " 开启语法高亮
 syntax on
@@ -99,14 +97,6 @@ let NERDTreeWinPos=1
  autocmd StdinReadPre * let s:std_in=1
  autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
-
-
-let Tlist_Show_One_File=1
-let Tlist_WinWidt =10              "设置taglist的宽度
-let Tlist_Exit_OnlyWindow=1
-let Tlist_Use_Right_Window=0        "在右侧窗口中显示taglist窗口
-map <F6> :Tlist<CR>
-
 " 寻找全局配置文件
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
 " 禁用syntastic来对python检查
@@ -157,3 +147,73 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 nmap sp <Plug>(ale_previous_wrap)
 nmap sn <Plug>(ale_next_wrap)
 
+ab sp [<span id = " "></span>](#0)
+
+set autoindent
+
+"按下F9进行编译运行
+map <F9> :call CompileRunGcc() <CR>
+func! CompileRunGcc()
+	silent exec "w"
+	"	exec "!clear"
+	"if &filetype == 'cpp'
+	silent exec "!g++ %"
+	exec "!./a.out"
+	"elseif &filetype == 'java'
+	"	exec "!javac %"
+	"	exec "!java %<"
+	"endif
+endfunc
+ 
+imap <c-]> {<cr>}<c-o>O<left><right>
+	 
+map <C-A> ggVG"+y
+	 
+	 
+"inoremap ( ()<LEFT>
+"inoremap [ []<LEFT>
+"inoremap { {}<LEFT>
+"inoremap " ""<LEFT>
+"inoremap ' ''<LEFT>
+	 	 
+map <F2> :call SetTitle()<CR>
+func SetTitle()
+let l = 0
+
+"let l = l + 1 | call setline(l,'/* ***********************************************')
+"let l = l + 1 | call setline(l,'Author        :herongwei')
+"let l = l + 1 | call setline(l,'Created Time  :'.strftime('%c'))
+"let l = l + 1 | call setline(l,'File Name     :'.expand('%'))
+"let l = l + 1 | call setline(l,'************************************************ */')
+"let l = l + 1 | call setline(l,'')
+
+"let l = l + 1 | call setline(l,'#include <cstdio>')
+let l = l + 1 | call setline(l,'#include <cstring>')
+let l = l + 1 | call setline(l,'#include <iostream>')
+let l = l + 1 | call setline(l,'#include <algorithm>')
+"let l = l + 1 | call setline(l,'#include <vector>')
+"let l = l + 1 | call setline(l,'#include <queue>')
+"let l = l + 1 | call setline(l,'#include <set>')
+"let l = l + 1 | call setline(l,'#include <map>')
+"let l = l + 1 | call setline(l,'#include <cmath>')
+"let l = l + 1 | call setline(l,'#include <cstdlib>')
+"let l = l + 1 | call setline(l,'#include <time.h>')
+let l = l + 1 | call setline(l,'using namespace std;')
+let l = l + 1 | call setline(l, '')
+let l = l + 1 | call setline(l,'typedef long long ll;')
+let l = l + 1 | call setline(l, '')
+"let l = l + 1 | call setline(l,'const int maxn  = 1e5+233;')
+"let l = l + 1 | call setline(l,'const int MOD   = 1e9+7;')
+"let l = l + 1 | call setline(l,'const double eps= 1e-6;')
+"let l = l + 1 | call setline(l,'const double pi = acos(-1.0);')
+"let l = l + 1 | call setline(l,'int n,m,t,ans,res,tmp;  ')
+let l = l + 1 | call setline(l,'int main(){')
+"let l = l + 1 | call setline(l,'    //freopen("in.txt","r",stdin);')
+"let l = l + 1 | call setline(l,'    //freopen("out.txt","w",stdout);')
+let l = l + 1 | call setline(l,'    ')
+let l = l + 1 | call setline(l,'    return 0;')
+let l = l + 1 | call setline(l,'}')
+endfunc
+
+"空格键格式化当前行，并跳到下一行
+imap <CR> <ESC> == o

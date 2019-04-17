@@ -79,6 +79,8 @@ title: 链接收藏
 10. 图片托管：https://miao.su/
 
 11. 多种语言在线编译器：http://www.dooccn.com/cpp/
+
+12. 多平台音乐免费下载: https://music.boxmoe.cn/ 
 ---
 
 # <font size=4>好的技术博文</font>
