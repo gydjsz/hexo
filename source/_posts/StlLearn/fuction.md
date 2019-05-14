@@ -1,5 +1,5 @@
 ---
-title: 二、STL算法篇
+title: 小技巧
 ---
 
 //去掉对c输入输出的兼容，加快c++速度
@@ -25,6 +25,7 @@ int permutation(int n){
 }
 ```
 2. nth_element(a + l, a + k, a + r): 使得ａ这个数组中区间(l, r)内的第ｋ大元素处在第ｋ个位置上, 默认排在k前面的元素都不比它大，排在它后面的元素都不比它小,而左右两边是无序的
+
 ```cpp
 #include <algorithm>
 
@@ -63,4 +64,47 @@ ss >> n;
 cout << n << endl;   //n = 2233
 ```
 
-4. bitset
+4. bitset<n> bit(num);  // 将num转化为n位二进制 
+```cpp
+#include <bitset>
+
+bitset<2> b(3);
+cout << b << endl;  // 输出11
+```
+
+5. 输入一个数字num, 求num的位数
+#include <cmath>
+
+ len = int(log10(num)) + 1
+
+6. 考虑一个有n个元素的排列，若一个排列中所有的元素都不在自己原来的位置上，那么这样的排列就称为原排列的一个错排。 n个元素的错排数记为D(n) 
+
+错排公式:
+D(n) = (n-1) [D(n-2) + D(n-1)]
+
+特殊地，D(1) = 0, D(2) = 1.
+
+7. 快读板子
+
+```
+namespace io {
+    const int SIZE = 1e7 + 10;
+    char inbuff[SIZE];
+    char *l, *r;
+    inline void init() {
+        l = inbuff;
+        r = inbuff + fread(inbuff, 1, SIZE, stdin);
+    }
+    inline char gc() {
+        if (l == r) init();
+        return (l != r) ? *(l++) : EOF;
+    }
+    void read(int &x) {
+        x = 0; char ch = gc();
+        while(!isdigit(ch)) ch = gc();
+        while(isdigit(ch)) x = x * 10 + ch - '0', ch = gc();
+    }
+} using io::read;
+```
+
+在主程序中 read(x); 即可。

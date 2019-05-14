@@ -1,13 +1,12 @@
 ﻿---
 title: 链接收藏
 ---
-收藏一些有用的链接
-<!--more-->
 
 # <font size=4>下载链接</font>
 1. putty下载:&ensp;[https://pan.baidu.com/s/1X_IITIlSP5u_wnKPiOL-oA](https://pan.baidu.com/s/1X_IITIlSP5u_wnKPiOL-oA)    
 &ensp;&ensp;&ensp; 提取码：8of8
 ---
+<!--more-->
 
 2. xshell下载链接：https://pan.baidu.com/s/1qb_wYdU3S-9s3dpBzIMCoQ 
 &ensp;&ensp;&ensp; 提取码：r2x7 
@@ -81,6 +80,10 @@ title: 链接收藏
 11. 多种语言在线编译器：http://www.dooccn.com/cpp/
 
 12. 多平台音乐免费下载: https://music.boxmoe.cn/ 
+
+13. 在线工具: https://tool.lu/
+
+14. 百度云不限速: https://www.baiduwp.com/
 ---
 
 # <font size=4>好的技术博文</font>
