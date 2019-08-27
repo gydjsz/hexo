@@ -1,5 +1,6 @@
 ---
 title: java图形库学习
+tags: java 
 ---
 需要继承JFrame类来画窗口 => public class Game extends JFrame {}
 setTitle(String s);   //设置窗口标题

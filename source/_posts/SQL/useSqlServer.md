@@ -1,5 +1,6 @@
 ---
 title: 数据库使用笔记
+tags: sql
 ---
 
 停止，启动，重启SQL server服务

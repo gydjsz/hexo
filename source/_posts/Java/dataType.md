@@ -1,5 +1,6 @@
 ---
 title: java基本数据类型
+tags: java
 ---
 
 1. char类型转化为小写字母

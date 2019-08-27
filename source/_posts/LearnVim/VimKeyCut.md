@@ -1,5 +1,6 @@
 ---
 title: vim快捷键
+tags: vim
 ---
 [参考链接]https://www.cnblogs.com/jy02414216/archive/2012/10/29/2745001.html
 [参考链接]https://blog.csdn.net/scaleqiao/article/details/45153379

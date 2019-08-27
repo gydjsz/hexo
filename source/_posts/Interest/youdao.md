@@ -1,5 +1,6 @@
 ---
 title: linux终端下实现有道翻译
+tags: interst
 ---
 [参考链接1](https://blog.csdn.net/jiangxiaoma111/article/details/38461447)
 [参考链接2](https://blog.csdn.net/Naruto_____/article/details/47400003)

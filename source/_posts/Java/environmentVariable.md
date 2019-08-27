@@ -1,5 +1,6 @@
 ---
 title: c++ 和 java添加环境变量
+tags: java
 ---
 ```
 //MinGW(以下根据自己的目录来)

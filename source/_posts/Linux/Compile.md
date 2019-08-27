@@ -1,5 +1,6 @@
 ---
 title: c++和java在linux下的编译运行
+tags: linux
 ---
 
 <font size = 4>**c++的编译运行**</font>

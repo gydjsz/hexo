@@ -1,5 +1,6 @@
 ---
 title: 缩略linux路径
+tags: linux
 ---
 emacs ~/.bashrc  将
 

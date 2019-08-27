@@ -1,5 +1,6 @@
 ---
 title: 关于JFrame使用setBackground()设置背景色没反应的问题
+tags: java
 ---
 参考链接:&ensp;[https://zhidao.baidu.com/question/263731760.html](https://zhidao.baidu.com/question/263731760.html)
 参考链接:&ensp;[https://blog.csdn.net/qq_34970891/article/details/69665986](https://blog.csdn.net/qq_34970891/article/details/69665986)

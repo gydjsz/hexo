@@ -1,5 +1,6 @@
 ---
 title: Linux下的技巧操作
+tags: linux 
 ---
 
 # 一、好用的工具

@@ -1,5 +1,6 @@
 ---
 title: How to operate xsel in Linux?
+tags: linux
 ---
 
 1. 

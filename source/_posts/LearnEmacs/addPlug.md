@@ -1,5 +1,6 @@
 ---
 title: 为emacs添加源
+tags: emacs
 ---
 参考链接:https://blog.csdn.net/sjhuangx/article/details/51252522
 参考链接:https://blog.csdn.net/watanuki2006/article/details/52122427

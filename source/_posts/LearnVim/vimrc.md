@@ -1,5 +1,6 @@
 ---
 title: vim配置
+tags: vim
 ---
 " ----------------------------- Vundle Start -----------------------------
 set nocompatible

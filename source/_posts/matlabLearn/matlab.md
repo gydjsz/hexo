@@ -1,5 +1,6 @@
 ---
 title: matlab学习
+tags: matlab
 ---
 
 1. clc,clear;   清除命令

@@ -1,4 +1,6 @@
+---
 title: 学习新的emacs快捷键
+tags: emacs
 ---
 # <font size=4>emacs对文本执行操作</font>
 C-x-t: 交换上下两行
