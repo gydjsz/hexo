@@ -1,5 +1,6 @@
 ---
 title: centos7中使用yum安装ntfs-3g
+tags: linux
 ---
 1. 加源
 wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo

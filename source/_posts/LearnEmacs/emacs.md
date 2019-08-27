@@ -1,5 +1,6 @@
 ---
 title: emacs配置
+tags: emacs
 ---
 这个配置有点乱，但是先放这里
 <!--more-->

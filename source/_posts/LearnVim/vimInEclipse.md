@@ -1,5 +1,6 @@
 ---
 title: 在eclipse中使用vim
+tags: vim
 ---
 参考链接:&ensp;https://blog.csdn.net/wr132/article/details/70232043
 1. 在help中找到Install New SoftWare,点击add,输入name和网址

@@ -1,5 +1,6 @@
 ---
 title: java中的消息对话框
+tags: java
 ---
 
 ```java

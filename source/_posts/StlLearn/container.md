@@ -1,8 +1,8 @@
 ---
 title: 一、STL容器篇
-photo: https://miao.su/images/2019/02/05/095b2b39b.png
+tags: stl
 ---
-![](https://miao.su/images/2019/02/05/095b2b39b.png)
+<img src="https://miao.su/images/2019/02/05/095b2b39b.png" width=50% height=50%>
 <!-- more -->
 
 <font size = 4 color = "#00F5FF">

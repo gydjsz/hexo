@@ -1,5 +1,6 @@
 ---
 title: python
+tags: python
 ---
 
 **大小写转换**

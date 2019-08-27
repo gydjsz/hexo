@@ -1,5 +1,6 @@
 ---
 title: 设置emacs里面的字体类型
+tags: emacs
 ---
 在Option里面找到Set Default Font，然后选择自己喜欢的字体，打开.emacs文件，输入M-x，在下方输入describe-font，
 

@@ -1,5 +1,6 @@
 ﻿---
 title: 链接收藏
+tags: link
 ---
 
 # <font size=4>下载链接</font>

@@ -1,5 +1,6 @@
 ---
 title: String类
+tags: java
 ---
 1. String类型访问里面的每一个字符可以使用s.charAt(i)
 ```java

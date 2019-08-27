@@ -1,5 +1,6 @@
 ---
 title: 远程登陆linux系统
+tags: linux
 ---
 1. 开通ssh服务
 sudo apt-get install openssh-server

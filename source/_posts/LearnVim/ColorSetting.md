@@ -1,5 +1,6 @@
 ---
 title: vim中修改颜色配置
+tags: vim
 ---
 
 参考链接:&ensp;[https://blog.csdn.net/qq_16912257/article/details/77957248](https://blog.csdn.net/qq_16912257/article/details/77957248)

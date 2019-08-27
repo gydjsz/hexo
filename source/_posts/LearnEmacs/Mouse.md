@@ -1,5 +1,6 @@
 ---
 title: 终端下emacs鼠标支持
+tags: emacs
 ---
 [参考链接]http://cn-popeye.iteye.com/blog/1164033
 [参考链接]http://blog.chinaunix.net/uid-20609878-id-1915823.html
