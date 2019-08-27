@@ -5,16 +5,16 @@ title: python
 **大小写转换**
 ```python
 name = "hello, world"
-name = name.title()   #将单词首字母大写
-print(name)           #输出Hello, World
-print(name.upper())   #输出HELLO, WORLd   (将字符串中的所有字母转化为大写)
-print(name.lower())   #输出hello, world   (将字符串中的所有字母转化为小写)
+name = name.title()   # 将单词首字母大写
+print(name)           # 输出Hello, World
+print(name.upper())   # 输出HELLO, WORLd   (将字符串中的所有字母转化为大写)
+print(name.lower())   # 输出hello, world   (将字符串中的所有字母转化为小写)
 ```
 <!--more-->
 
 **注释**
 ```python
-单行: #
+单行: # 
 
 多行: ''' 注释''' 或者  """ 注释 """
 ```
@@ -22,28 +22,33 @@ print(name.lower())   #输出hello, world   (将字符串中的所有字母转�
 **删除末尾的空格**
 ```python
 favorite_language = 'python '
-favorite_language.rstrip()   #删除末尾的空格
+favorite_language.rstrip()   # 删除末尾的空格
 ```
 
 **将非字符串转化为字符串**
 ```python
-str(n)  #将非字符串转化为字符串
+str(n)  # 将非字符串转化为字符串
 ```
 
 **列表**
 ```python
-list = []   #创建一个空列表
-list.append('abc')    #在列表末尾添加元素
-list.insert(0, 'abc')    #在列表的0位置处添加一个元素
-del list[1]    #删除列表中1位置的元素
-x = list.pop()    #弹出栈顶元素
-list.remove('abc')   #移除第一个出现的元素abc
-list.sort()    #按字母顺序从小到大
-list.sort(reverse=True)   #按与字母顺序相反的顺序排列
-sorted(list)     #字母顺序显示列表，不影响列表内部排序
-sorted(list, reverse=True) #逆字母顺序显示列表，不影响列表内部排序
-list.reverse()     #反转列表中的元素
-len(list)    #获取列表长度
+list = []   # 创建一个空列表
+list.append('abc')    # 在列表末尾添加元素
+list.insert(0, 'abc')    # 在列表的0位置处添加一个元素
+del list[1]    # 删除列表中1位置的元素
+x = list.pop()    # 弹出栈顶元素
+x = list.pop(1)  # 弹出索引为1的元素
+list.remove('abc')   # 移除第一个出现的元素abc
+list.sort()    # 按字母顺序从小到大
+list.sort(reverse=True)   # 按与字母顺序相反的顺序排列
+sorted(list)     # 字母顺序显示列表，不影响列表内部排序
+sorted(list, reverse=True) # 逆字母顺序显示列表，不影响列表内部排序
+list.reverse()     # 反转列表中的元素
+len(list)    # 获取列表长度
+list.count("2233")  # 统计数据出现的次数
+tmp = [1, 2, 3]
+list.extend(tmp)  # 追加列表
+list.index("1")   # 获得列表的索引
 ```
 
 **print输出的格式**
@@ -55,16 +60,16 @@ print(2233, end = '')
 **产生数字列表**
 ```python
 生成数字列表:
-numbers = list(range(5))   #range产生[0, 5)的整数
+numbers = list(range(5))   # range产生[0, 5)的整数
 ```
 
-** #表示乘方运算
+** # 表示乘方运算
 
 **最小值、最大值及总和**
 ```python
 numbers = list(range(10))
 
-#数字列表中的最小值,最大值以及总和
+# 数字列表中的最小值,最大值以及总和
 min(numbers)    
 max(numbers)
 sum(numbers)
@@ -72,32 +77,38 @@ sum(numbers)
 
 **列表解析**
 ```python
-range(start, stop, step)    #从start开始，以stop - 1结束步长为step的整数
-list = [value for value in range(1, 21, 2)]   #1~20以内的奇数.列表解析: 表达式(value) + 循环(for...))
+range(start, stop, step)    # 从start开始，以stop - 1结束步长为step的整数
+list = [value for value in range(1, 21, 2)]   # 1~20以内的奇数.列表解析: 表达式(value) + 循环(for...))
 ```
 
 **切片**
 ```python
 players = ['charles', 'martina', 'michael', 'florence', 'eli']
-print(players[0 : 3])    #输出列表中的0~2号元素
-print(players[:4])       #省略第一个索引，默认为从头开始
-print(players[2:])       #省略第二个索引，默认为从索引2开始到末尾
-print(players[-3:])      #从倒数第三个索引开始到末尾所有元素
+print(players[0 : 3])    # 输出列表中的0~2号元素
+print(players[:4])       # 省略第一个索引，默认为从头开始
+print(players[2:])       # 省略第二个索引，默认为从索引2开始到末尾
+print(players[-3:])      # 从倒数第三个索引开始到末尾所有元素
 
-#遍历切片
+# 遍历切片
 for player in players[:3]:
 	print(player)
 
-#复制列表
+# 复制列表
 other_players = players[:]
 
-#如果是下面这样, 并不能复制列表
-other_players = players     #将other_players关联到players，other_players内容改变对players有效
+# 如果是下面这样, 并不能复制列表
+other_players = players     # 将other_players关联到players，other_players内容改变对players有效
 ```
 
 **元组**
 ```python
-dimensions = (200, 50)    #使用括号来标识, 元组内的值不能更改,但是可以重新定义
+dimensions = (200, 50)    # 使用括号来标识, 元组内的值不能更改,但是可以重新定义
+name_list = [1, 2, 3]
+name_tuple = (1, 2, 3)
+
+# 列表和元组的相互转化
+list(name_tuple)
+tuple(name_list)
 dimensions = (400, 100)
 for dimension in dimensions:
 	print(dimension)
@@ -127,17 +138,38 @@ favorite_language = {
 	'phil': 'python',
 }
 
-for key in favorite_language.keys():    #遍历键
+for key in favorite_language.keys():    # 遍历键
 	print(key)
-for name in favorite_language.values():  #遍历值
+for name in favorite_language.values():  # 遍历值
 	print(name)
 for k, v in favorite_language.items():
 	print(k + " " v)
+
+for key in favorite_language:
+	print("%s %s" % (key, favorite_language[key]))
+
+# 字典中有键则更改值,否则增加键值对
+favorite_language["jen"] = "java"
+
+# 合并字典
+name_tuple = {
+	"name": "李四",
+	"age": 12
+}
+tmp = {
+"name" :"张三"
+}
+
+# 有键则改值,否则增加键值对
+name_tuple.update(tmp)
+
+# 清空字典
+name_tuple.clear()
 ```
 
 **嵌套**
 ```python
-#字典列表
+# 字典列表
 alien_0 = {'color': 'green', 'points': 5}
 alien_1 = {'color': 'yellow', 'points': 10}
 alien_2 = {'color': 'red', 'points': 15}
@@ -147,14 +179,76 @@ aliens = [alien_0, alien_1, alien_2]
 for alien in aliens:
 	print(alien)
 
-#字典中储存列表
+# 字典中储存列表
 pizza = {
 	'crust': 'thick',
 	'toppings': ['mushrooms', 'extra cheese'],
 }
 ```
 
+# 字符串操作
 
+```python
+string = "hello, world"
+print(len(string))
+print(string.count("l"))
+print(string.index("l"))
+
+# 判断空白字符
+s = " "
+print(s.isspace())
+
+s = "3\u00b2"
+print(s.isnumeric())
+print(s)
+
+s = "hello, world"
+print(s.startswith("hell"))
+print(s.endswith("hell"))
+
+# 检测ｓｔｒ是否包含在ｓ的start,end范围中,是返回索引,否则返回-1
+# index判断不存在会报错
+print(s.find("l", 0, len(s)))
+
+# 替换字符串,返回替换之后的字符串,不会修改原字符串的内容
+s = "123"
+sr = "2233"
+print(s.replace(s, sr))
+print(s)
+
+poem = [
+    "123",
+    "1234",
+    "12345",
+    "123456",
+    "1234567"
+]
+
+print("-" * 10)
+
+# center 居中,填充长度,填充字符
+# ljust 左对齐
+# rjust 右对齐
+for p in poem:
+    print("|%s|" % p.ljust(10, "*"))
+
+
+# lstrip() 截掉左边开始的空白字符
+# rstrip() 截掉右边开始的空白字符
+# strip() 截掉左右两边开始的空白字符
+
+s = " aa bb cc "
+print(s.lstrip())
+print(s.rstrip())
+print(s.strip())
+
+# string.split(str="", num) 以str分割字符串string, 分割num+1个子字符串,返回列表
+print(s.split())
+
+# string.join(seq) 以string为分隔符,将seq中的所有元素合并为一个新的字符串
+s = ["1", "2", "3"]
+print(" ".join(s))
+```
 
 
 
