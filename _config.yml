@@ -111,7 +111,7 @@ live2d:
   display:
     position: right
     width: 260   #160  168
-    height: 268
+    height: 273
   mobile:
     show: true
 

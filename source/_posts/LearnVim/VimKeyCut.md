@@ -44,6 +44,7 @@ zb :将当前行移动到屏幕底端
 
 <font size=3>**VIM分屏指令**</font>
 
+:vert term 终端和vim分屏，8.1版本之后
 :new (name)，新建一个未命名(文件名为name)的窗口件并分屏， 快捷键，Ctrl+W，然后马上按n键
 :split (name) / 缩写:sp name 水平分屏，将当前屏分为两个，水平的。   Ctrl + w, s
 :vsplit (name) / 缩写:vs name 垂直分屏，将当前屏分为两个，垂直的。  Ctrl + w, v
