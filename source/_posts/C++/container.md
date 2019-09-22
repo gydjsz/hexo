@@ -569,7 +569,7 @@ insert()   //往容器插入元素，返回pair<iterator, bool>
 //第一种:通过pair的方式插入
 insert(pair<int, string>(1, "折纸"))
 //第二种:通过pair的方式插入
-insert(makr_pair(2, "二亚"))
+insert(make_pair(2, "二亚"))
 //第三种:通过value_type的方式插入
 insert(map<int, string>::value_type(3, "狂三"))
 //第四种:通过数组的方式插入

@@ -4,10 +4,7 @@ tags: markdown
 ---
 [markdown语法]https://www.jianshu.com/p/b03a8d7b1719
 [markdown语法]https://www.appinn.com/markdown/#header
-[markdown缩进]https://www.cnblogs.com/Flylater/p/6264799.html
 [先来一头马克飞象(在线使用markdown)]https://maxiang.io/
-[markdown插入图片]https://blog.csdn.net/slaughterdevil/article/details/79255933
-[添加百度云图片链接]https://jingyan.baidu.com/article/f006222806dfdcfbd3f0c880.html
 <!--more-->
 
 目录：
@@ -16,6 +13,7 @@ tags: markdown
 3. [插入图片](#3)
 4. [添加页内跳转](#4)
 5. [文章摘要显示](#5)
+6. [表格](#6)
 
 # <span id = "1"> <font size = 3>1.插入跳转链接</font></span>
 <a href="https://blog.fbzl.org/" target="_blank">https://blog.fbzl.org/"</a>
@@ -87,4 +85,13 @@ tags: markdown
 ```
 摘要文字部分
 <!--more-->
+```
+
+# <span id="6"><font size=3>6.插入表格</font></span>
+
+```cpp
+| 左对齐 | 右对齐 | 居中对齐 |
+| :-----| ----: | :----: |
+| 单元格 | 单元格 | 单元格 |
+| 单元格 | 单元格 | 单元格 |
 ```

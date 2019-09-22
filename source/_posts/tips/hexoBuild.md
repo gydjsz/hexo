@@ -6,11 +6,12 @@ title: github搭建自己的博客步骤
 
 1.安装git：sudo apt-get install git
 2.git安装完成之后设置基本信息
-* 1)设置用户名：git config --global user.name “用户名”
 
-* 2)设置用户名邮箱：git config --global user.email "邮箱"
++ 设置用户名：git config --global user.name “用户名”
 
-* 3)查看设置：git config --list
++ 设置用户名邮箱：git config --global user.email "邮箱"
+
++ 查看设置：git config --list
 
 3.添加ssh公钥：ssh-keygen -t rsa -C "email",输入cat ~/.ssh/if_rsa.pub，将公钥添加到github中，可以输入ssh -T git@github.com，测试是否连接成功
 4.安装nodejs：curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
@@ -36,7 +37,7 @@ sudo apt-get install -y nodejs
  git remote add origin git地址
 
 首先找到一个背景图片放到 hexo（hexo工程文件）-> themes -> next -> source -> images 的路径下；
-hexo（hexo工程文件）-> themes -> next -> source -> css -> _custom ，找到路径下的custom.styl文件，在文件的最上方加上一代码 body { background:url(/images/backGround.jpg（这是你之前加的背景图片的名字）);} 就完事了。
+hexo（hexo工程文件）-> themes -> next -> source -> css -> \_custom ，找到路径下的custom.styl文件，在文件的最上方加上一代码 body { background:url(/images/backGround.jpg（这是你之前加的背景图片的名字）);} 就完事了。
 出现   fatal: 不是一个 git 仓库（或者任何父目录）：.git   错误提示时，需要初始化本地仓库：git init
 hexo new "postName" #新建文章
 
@@ -97,3 +98,4 @@ url = https://用户名:密码@github.com/用户名/仓库名.git
 
 打开hexo博客分类标签出现Cannot GET/xxxx，说明需要初始化子目录，输入hexo new page “categories”, 就会在source文件里面初始化这些目录，并生成一个index文件
 
+如果看到这里你还不会，请<a href="http://baidu.physton.com/?q=hexo 搭建博客">戳这里</a>
