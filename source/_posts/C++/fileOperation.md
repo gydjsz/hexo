@@ -5,6 +5,8 @@ tags: c++
 
 1. 定义一个数据流对象指针
 
+默认ios::in和ios::out,可以不加
+
 ```cpp
 #include <fstream>
 
