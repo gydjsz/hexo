@@ -68,3 +68,9 @@ int main() {
 }
 
 ```
+
+```cpp
+使用getline可以读取空格
+string s;
+while(getline(input, s)) ;
+```
