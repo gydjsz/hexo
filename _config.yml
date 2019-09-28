@@ -104,7 +104,7 @@ live2d:
   pluginRootPath: live2dw/
   pluginJsPath: lib/
   pluginModelPath: assets/
-  tagMode: false
+  tagMode: true 
   debug: false
   model:
     use: live2d-widget-model-poi 
@@ -113,5 +113,5 @@ live2d:
     width: 260   #160  168
     height: 273
   mobile:
-    show: true
+    show: false 
 
