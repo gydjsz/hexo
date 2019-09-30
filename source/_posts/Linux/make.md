@@ -370,14 +370,14 @@ $(addsuffix <suffix>, <names...>)
 把后缀<suffix>加到每个<names>单词后面
 ```
 
-16.  加前缀函数
+16. 加前缀函数
     
 ```
 $(addprefix <suffix>, <names...>)
 把前缀<suffix>加到每个<names>单词前面
 ```
 
-17.  循环函数
+17. 循环函数
 ```
 $(foeach <var>, <list>, <text>)
 把<list>中的单词逐一取出，并放到<var>中，然后再执行<text>表达式
