@@ -32,6 +32,7 @@ int main(){
 		solve();
 	}
 	else{
+		wait(NULL);
 		printf("parent\n");
 	}
 	return 0;
