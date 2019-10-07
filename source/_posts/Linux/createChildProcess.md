@@ -6,6 +6,8 @@ tags:
 
 1. 创建一个子进程并求1~100的和
 
+<!--more-->
+
 文件cal.c
 
 ```c
@@ -49,22 +51,22 @@ gcc cal.c
 **gcc cal.c -g**生成调试信息
 输入**gdb**进入调试
 **file a.out**加载调试文件
-![](createChildProcess/c1.png)
+![](c1.png)
 
 **l**查看代码, **b 行数**添加断点
-![](createChildProcess/c2.png)
+![](c2.png)
 
 **set follow-fork-mode child**跟踪子进程(该命令在fork之前执行, 设置parent则跟踪父进程)
 **show follow-fork-mode**查看跟踪的进程
-![](createChildProcess/c3.png)
+![](c3.png)
 
 **r**运行程序
 **p pid**打印pid信息
 **n**执行下一步
-![](createChildProcess/c4.png)
+![](c4.png)
 
 执行结果
-![](createChildProcess/c5.png)
+![](c5.png)
 
 在fork函数执行之后会返回一个值
 -1即fork失败，值为0时即子进程，返回值大于0即子进程id
