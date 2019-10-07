@@ -24,8 +24,8 @@ int simple_init(void){
 }
 
 void simple_exit(void){
-	printk(KERN_INFO "Removing Module\n");
 	printk(KERN_INFO "GoodBye!\n");
+	printk(KERN_INFO "Removing Module\n");
 }
 
 module_init(simple_init);
