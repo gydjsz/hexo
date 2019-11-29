@@ -143,3 +143,6 @@ https://www.cnblogs.com/xd502djj/p/9319980.html
 
 17. 三级网络技术指南
 http://96ea5f9a.wiz03.com/share/s/2mWB-q0kLQ9B2ZqZt31C4U2z0nE7Tm03PAoR28IbN93qLZvQ
+
+18. Ubuntu 添加中文字体 
+https://www.cnblogs.com/Jimc/p/10302267.html

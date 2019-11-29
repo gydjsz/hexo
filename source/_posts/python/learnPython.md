@@ -251,6 +251,204 @@ s = ["1", "2", "3"]
 print(" ".join(s))
 ```
 
+**绘制图形**
 
+导入模块import turtle
 
++ 画笔运动函数
+
+| 函数 | 别名(缩写) | 功能 |
+| :----: | :----: | :----: |
+|forward(d) | fd(d)	| 向前移动距离d代表距离|
+|backward(d) | bk(d)或back(d) | 向后移动距离d代表距离|
+|right(degree) | rt(degree)	| 向右转动多少度|
+|left(degree) | It(degree) | 向左转动多少度|
+|goto(x,y) || 将画笔移动到坐标为（x，y）的位置|
+|stamp() || 绘制当前图形|
+|speed(speed) || 画笔绘制的速度范围[0，10]整数|
+|setheading(degree) | seth(degree) | 海龟朝向，degree代表角度|
+|circle(radius,extent) || 绘制一个圆形，其中，radius为半径，extent为度数，例如，若extent为180，则画一个半圆；如果画一个圆形，可不必写第2个参数|
+
++ 画笔控制函数
+
+| 函数 | 别名(缩写) | 功能|
+| :----: | :----: | :----: |
+|pendown() | down()或pd() | 画笔落下，移动时绘制图形|
+|penup() | up()或pu() | 画笔拾起，移动时不绘制图形|
+|reset() || 恢复所有设置|
+|pensize(width) | width() | 画笔的宽度|
+|pencolor(colorstring) || 画笔的颜色|
+|fillcolor(colorstring)	|| 绘制图形的填充颜色|
+
++ 填充图像
+turtle.begin_fill() 准备开始填充图形
+绘制图像
+turtle.end_fill()  填充完成
+
+# 文件操作
+
+open()函数将打开文件的对象保存在file_object中
+关键字with的功能是不再需要访问文件后自动将文件关闭
+read()将字符串保存在contents中
+```python
+with open("test.txt") as file_object:
+	contents = file_object.read()
+	print(contents)
+```
+
+逐行读取数据
+```python
+with open("test.txt") as file_object:
+	for line in file_object:
+		print(line)
+```
+
+将文件内容的每一行保存在一个列表中
+```python
+with open('test.txt') as file_object:
+    lines = file_object.readlines()
+```
+
+将信息写入文件中
+```python
+with open('test2.txt','w') as info:
+    info.write('Hello world!')
+```
+
+将信息追加到文件末尾
+```python
+with open('test2.txt','a') as info:
+    info.write('Hello my brothers!\n')
+```
+
+# 异常处理
+
+try中出现错误，执行except中的代码
+```python
+try:
+    print(2/0)
+except:
+    print("We can't divide by zero!")
+```
+
+通过raise显式抛出自己的包含特定信息的异常, 执行了raise语句，raise之后的语句将不能执行
+```python
+def read_C():
+    try:
+        C = float(sys.argv[1])
+		except ValueError:
+			raise ValueError('Degrees must be number, not "%s"' % sys.argv[1])
+    if C < -273.15:
+        raise ValueError('C=%g is a non-physical value!' % C)
+    return C
+```
+
+try中没有异常，执行else中的代码
+```python
+a = int(input())
+b = int(input())
+try:
+    answer = a/b
+except:
+    print("We can't divide by zero!")
+else:
+    print(answer)
+```
+
+# 保留小数
+
+```python
+n = 3.14159
+print("%.3f" % n)
+
+'''
+输出:
+3.142
+'''
+```
+
+```python
+print(round(80.23456, 3))
+print(round(100.000056, 3))
+
+'''
+输出:
+80.235
+100.0
+'''
+```
+
+# lambda函数
+
+```python
+# 求x + y
+f = lambda x, y: x + y
+print(f(1, 2))
+```
+
+```python
+list1 = [1, 7, 2, 3]
+def f(x):
+	return abs(x)
+
+# 利用sorted函数对列表中的元素根据绝对值大小升序排序
+list2 = sorted(list1, key = f)
+print(list2)
+```
+
+```python
+list1 = [1, 7, 2, 3]
+list2 = sorted(list1, key = lambda x: abs(x))
+print(list2)
+```
+
+# map()和reduce()
+
+## map()函数
+
+map()函数会根据传入的函数对指定的序列做映射。
+map()函数接收两个参数，一个是function函数，另一个参数是一个或多个序列。
+map()函数会将传入的函数依次作用到传入序列的每个元素，并把结果作为新的序列返回。
+
+map()函数的定义为：
+
+map(function, sequence[, sequence, ...]) -> list
+
+```python
+# 对传入的序列都执行乘2操作
+r = map(lambda x: x * 2, [1, 2, 3, 4])
+print(list(r))
+
+'''
+输出:
+[2, 4, 6, 8]
+'''
+```
+
+```python
+# 对传入的序列依次执行求和操作
+r = map(lambda x, y: x + y, [1, 2, 3], [4, 5, 6])
+print(list(r))
+```
+
+## reduce()函数
+
+reduce()函数把传入的函数作用在一个序列[x1, x2, x3, ...]上，这个函数必须要接收两个参数，reduce()函数把第一次计算的结果继续和序列中的下一个元素做累积计算
+
+reduce()函数的定义为:
+reduce(function, sequence[, initial]) -> value
+
+function参数是有两个参数的函数，reduce()函数依次序列中取元素，和上一次调用function函数的结果做参数再次调用function函数.
+
+```python
+from functools import reduce
+r = reduce(lambda x, y: x + y, [1, 2, 3, 4, 5],6)
+print(r)
+
+# 相当于((((((1+6)+2)+3)+4)+5))
+```
+
+# matplotlib绘图
+
+import matplotlib.pyplot as plt
 

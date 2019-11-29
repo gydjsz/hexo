@@ -180,11 +180,3 @@ tar -jcvf 打包文件.tar.bz2 被打包的文件
 解压
 tar -jxvf 打包文件.tar.bz2 -C 目标路径
 
-
-
-
-
-
-
-
-
