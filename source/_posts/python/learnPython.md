@@ -3,7 +3,7 @@ title: python
 tags: python
 ---
 
-**大小写转换**
+# 大小写转换
 ```python
 name = "hello, world"
 name = name.title()   # 将单词首字母大写
@@ -13,25 +13,25 @@ print(name.lower())   # 输出hello, world   (将字符串中的所有字母转�
 ```
 <!--more-->
 
-**注释**
+# 注释
 ```python
 单行: # 
 
 多行: ''' 注释''' 或者  """ 注释 """
 ```
 
-**删除末尾的空格**
+# 删除末尾的空格
 ```python
 favorite_language = 'python '
 favorite_language.rstrip()   # 删除末尾的空格
 ```
 
-**将非字符串转化为字符串**
+# 将非字符串转化为字符串
 ```python
 str(n)  # 将非字符串转化为字符串
 ```
 
-**列表**
+# 列表
 ```python
 list = []   # 创建一个空列表
 list.append('abc')    # 在列表末尾添加元素
@@ -52,13 +52,13 @@ list.extend(tmp)  # 追加列表
 list.index("1")   # 获得列表的索引
 ```
 
-**print输出的格式**
+# print输出的格式
 ```python
 输入不换行:
 print(2233, end = '')
 ```
 
-**产生数字列表**
+# 产生数字列表
 ```python
 生成数字列表:
 numbers = list(range(5))   # range产生[0, 5)的整数
@@ -76,13 +76,13 @@ max(numbers)
 sum(numbers)
 ```
 
-**列表解析**
+# 列表解析
 ```python
 range(start, stop, step)    # 从start开始，以stop - 1结束步长为step的整数
 list = [value for value in range(1, 21, 2)]   # 1~20以内的奇数.列表解析: 表达式(value) + 循环(for...))
 ```
 
-**切片**
+# 切片
 ```python
 players = ['charles', 'martina', 'michael', 'florence', 'eli']
 print(players[0 : 3])    # 输出列表中的0~2号元素
@@ -101,7 +101,7 @@ other_players = players[:]
 other_players = players     # 将other_players关联到players，other_players内容改变对players有效
 ```
 
-**元组**
+# 元组
 ```python
 dimensions = (200, 50)    # 使用括号来标识, 元组内的值不能更改,但是可以重新定义
 name_list = [1, 2, 3]
@@ -168,7 +168,7 @@ name_tuple.update(tmp)
 name_tuple.clear()
 ```
 
-**嵌套**
+# 嵌套
 ```python
 # 字典列表
 alien_0 = {'color': 'green', 'points': 5}
@@ -451,4 +451,161 @@ print(r)
 # matplotlib绘图
 
 import matplotlib.pyplot as plt
+
+## 折线图
+
+
+```python
+import matplotlib.pyplot as plt
+
+x = [1, 2, 3, 4]
+y = [4, 5, 7, 8]
+plt.plot(x, y)
+plt.show()
+```
+
+
+![png](output_1_0.png)
+
+
+---
+#### 设置曲线的样式
+
+
+```python
+plt.plot(x, y, marker="*", linewidth=3, linestyle="--", color="orange")
+plt.show()
+```
+
+
+![png](output_3_0.png)
+
+
+|:-:|:-:|
+|marker|数据点样式
+|linewidth|线宽
+|linestyle|线型样式
+|color|颜色
+
+
+```python
+plt.plot(x, y, "bo-") ## 绘制蓝色圆点实线
+plt.show()
+```
+
+
+![png](output_6_0.png)
+
+
+---
+#### 在一张图中绘制多条折线
+
+
+```python
+x1 = [3, 5, 7, 10]
+y1 = [4, 2, 3, 1]
+plt.plot(x, y, 'g--', x1, y1, 'bo-') ## (x,y)为绿色虚线，(x1, y1)为蓝色圆点直线
+plt.show()
+```
+
+
+![png](output_8_0.png)
+
+
+---
+#### 绘制曲线：y = $x ^ 3$ + $x ^ 2$ + 1
+
+
+```python
+x = range(0, 31) ## 生成0-30的列表
+def f(x):
+    return x ** 3 + x ** 2 + 1
+y = [f(w) for w in x] ## 获得x对应的y并存储为列表
+plt.plot(x, y)
+plt.show()
+```
+
+
+![png](output_10_0.png)
+
+
+---
+#### 数组计算
+
+|:-:|:-:|
+|array|接受一个序列并创建一个数组
+|arange|类似于range
+|linspace|返回在指定区间均匀间隔的数组，常用于创建等差数列
+|zeros|根据指定形状创建一个全 0 数组
+|zeros_like()|根据传入数组的形状创建一个全 0 数组
+|ones()|根据指定形状创建一个全 1 数组
+|ones_like()|根据传入数组的形状创建一个全 1 数组
+
+
+```python
+import numpy as np
+
+x1 = np.array([1, 2, 3, 4]) ## 将序列转化为数组  
+x2 = np.arange(1, 4)  ## 1~4的生成一个数组
+x3 = np.arange(1, 10, 2) ## 产生一个间隔为2的数组
+x4 = np.linspace(1, 9, 5) ## 产生1~10间隔相等的5个数的数组，也就是[1, 3, 5, 7, 9]
+x5 = np.zeros((3, 3)) ## 创建一个3 * 3的全零数组
+x6 = np.zeros_like(x5) ## 根据x5的形状,创建一个3 * 3的全零数组
+x7 = np.ones((2, 3)) ## 创建一个2 * 3的全一数组
+x8 = np.ones_like(x7) ## 根据x7的形状创建一个2 * 3的全一数组
+print("array:\n{}".format(x1))
+print("arange:\n{}".format(x2))
+print("arange:\n{}".format(x3))
+print("linspace:\n{}".format(x4))
+print("zeros:\n{}".format(x5))
+print("zeros_like:\n{}".format(x6))
+print("ones:\ng{}".format(x7))
+print("ones_like:\n{}".format(x8))
+```
+
+    array:
+    [1 2 3 4]
+    arange:
+    [1 2 3]
+    arange:
+    [1 3 5 7 9]
+    linspace:
+    [1. 3. 5. 7. 9.]
+    zeros:
+    [[0. 0. 0.]
+     [0. 0. 0.]
+     [0. 0. 0.]]
+    zeros_like:
+    [[0. 0. 0.]
+     [0. 0. 0.]
+     [0. 0. 0.]]
+    ones:
+    g[[1. 1. 1.]
+     [1. 1. 1.]]
+    ones_like:
+    [[1. 1. 1.]
+     [1. 1. 1.]]
+    
+
+**向量化：将需要循环才能操作数组的 Python 函数转化为直接操作整个数组的函数。向量化能够使得程序更短、可读性更好，且程序的运行速度更快。**
+
+#### 绘制$y = t^2*e^{-t^2}$
+
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+def f(x):
+    return x ** 2 * np.e ** (-1 * x ** 2)
+
+x = np.linspace(0, 3, 50) ## 生成50个数，区间为[0, 3]
+y = f(x)
+
+plt.plot(x, y)
+plt.show()
+```
+
+
+![png](output_16_0.png)
 
