@@ -481,6 +481,7 @@ plt.show()
 ![png](output_3_0.png)
 
 
+|函数|功能|
 |:-:|:-:|
 |marker|数据点样式
 |linewidth|线宽
@@ -532,6 +533,7 @@ plt.show()
 ---
 #### 数组计算
 
+|函数|功能|
 |:-:|:-:|
 |array|接受一个序列并创建一个数组
 |arange|类似于range

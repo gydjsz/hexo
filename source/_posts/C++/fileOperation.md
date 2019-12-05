@@ -14,6 +14,8 @@ ifstream input("/home/text.txt", ios::in)
 ofstream output("/home/text.txt", ios::out)
 ```
 
+<!--more-->
+
 
 2. 打开文件
 

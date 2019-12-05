@@ -4,13 +4,14 @@ tags: sql
 ---
 
 停止，启动，重启SQL server服务
-<!--more-->
 
 命令：sudo systemctl stop mssql-server     或  service mssql-server stop
                                              
 命令：sudo systemctl start mssql-server    或  service mssql-server start
                                              
 命令：sudo systemctl restart mssql-server  或  service mssql-server restart 
+
+<!--more-->
 
 移除mssqlserver开机自动启动服务
 update-rc.d -f mssql-server remove
@@ -132,6 +133,8 @@ SQL 语句
 授予User1在数据库服务器上具有系统管理员权限
 EXEC sp_addsrvrolemember 'User1', 'sysadmin'
 
+固定的服务器角色:
+
 + bulkadmin     //执行BULK INSERT语句
 + dbcreator     //创建、修改、删除和还原数据库
 + diskadmin     //管理磁盘文件
@@ -141,4 +144,112 @@ EXEC sp_addsrvrolemember 'User1', 'sysadmin'
 + setupadmin    //添加和删除链接服务器
 + sysadmin      //系统管理员权限
 
+固定的数据库角色:
+
++ db_accessadmin      //具有添加或删除数据库用户的权限
++ db_backupoperator   //具有备份数据库、备份日志的权限
++ db_datareader       //具有查询数据库中所有用户表数据的权限
++ db_datawriter       //具有更改数据库中所有用户表数据的权限
++ db_ddladmin         //具有建立、修改和删除数据库对象的权限
++ db_denydatareader   //不允许具有查询数据库中所有用户表数据的权限
++ db_denydatawriter   //不允许具有更改数据库中所有用户表数据的权限
++ db_owner            //具有数据库的全部操作权限
++ db_securityadmin    //具有管理数据库角色和角色成员以及数据库中的语句权限和对象权限
+
+
 38. 数据仓库是面向主题的、集成的、非易失的、随时间不断变化的数据集合，用来支持管理人员的决策
+
+39. 账户创建和删除
++ 创建登录账户
+
+创建SQL Server身份验证的登录账户。登录名为: USER1, 密码为:123，默认数据库为Library
+CREATE LOGIN USER1 WITH PASSWORD='123456', default_database=Library;
+
+创建SQL Server身份验证的登录账户。登录名为: USER2，密码为：123。要求该登录账户首次连接服务器时必须更改密码
+CREATE LOGIN USERR2 WITH PASSWORD='123' MUST_CHANGE
+
++ 删除登录名
+DROP LOGIN login_name
+
+40. CREATE USER user_name (FOR LOGIN login_name)
+如果省略FOR LOGIN，则新的数据库用户将被映射到同名的SQL Server登录名
+
+让Log1登录账户成为test数据库中的用户，并且用户名同登录名
+USE test;
+CREATE USER Log1;
+
+使用同样的登录名Log1，创建用户U1_Library_Log1访问数据库LibraryHF
+USE LibraryHF;
+CREATE USER U1_Library_Log1 FOR LOGIN Log1;
+
+删除用户
+DROP USER Log1;
+
+41. 管理权限
+
+授权
+GRANT 对象权限名 [ ， … ] ON {表名|视图名|存储过程名}
+   TO { 数据库用户名 | 用户角色名 } [ ，… ]
+
+收权语句
+REVOKE 对象权限名 [ ， … ] ON { 表名|视图名|存储过程名}
+   FROM { 数据库用户名 | 用户角色名 } [ ，… ] 
+
+拒绝语句
+DENY 对象权限名 [ ， … ] ON {表名|视图名|存储过程名}
+TO { 数据库用户名 | 用户角色名 } [ ，… ]   
+
+为用户user1授予Student表的查询和插入权
+GRANT SELECT, INSERT ON Student TO user1
+
+收回用户user1对Student表的查询权 
+REVOKE SELECT ON Student FROM user1
+
+42. UML图
+
+![](https://images2015.cnblogs.com/blog/1039166/201703/1039166-20170321200512502-745718093.png)
+
++ 用例图
+
+从用户的角度描述了系统的功能，并指出各个功能的执行者，强调用户的使用者，系统为执行者完成哪些功能
+
++ 类图
+
+描述类的内部结构和类与类之间的关系
+
++ 对象图
+
+描述的是参与交互的各个对象在交互过程中某一时刻的状态
+
++ 序列图
+
+描述了对象之间消息发送的先后顺序，强调时间顺序
+
++ 协作图
+
+描述了收发消息的对象的组织关系，强调对象之间的合作关系
+
++ 状态图
+
+描述类的对象所有可能的状态以及时间发生时状态的转移条件
+
++ 活动图
+
+描述了活动到活动的控制流
+
++ 构建图
+
+表示系统中构件与构件之间，类或接口与构件之间的关系图
+
++ 部署图
+
+描述了系统运行时进行处理的结点以及在结点上活动的构件的配置。强调了物理设备以及之间的连接关系
+
+43. 分布式数据库分片类型：
+
++ 水平分片
++ 垂直分片
++ 导出分片
++ 混合分片
+
+44. DFD方法由四种基本元素构成：数据流、处理、数据存储和外部项
