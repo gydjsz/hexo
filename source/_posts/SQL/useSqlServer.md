@@ -253,3 +253,53 @@ REVOKE SELECT ON Student FROM user1
 + 混合分片
 
 44. DFD方法由四种基本元素构成：数据流、处理、数据存储和外部项
+
+
+45. mysql数据库修改密码策略
+```cpp
+查看 mysql 初始的密码策略:
+SHOW VARIABLES LIKE 'validate_password%';
+
+设置密码的验证强度等级:
+set global validate_password_policy=LOW; (设置后只验证密码长度)
+
+设置密码长度:
+set global validate_password_length=6;
+
+设置用户密码:
+ALTER USER 'root'@'localhost' IDENTIFIED BY '123456';
+```
+
+46. mysql用户管理
+新建用户:
+```cpp
+create user "name"@"localhost" identified by "123456"
+create user "name"@"192.168.9.211" identified by "123456"
+create user "name"@"%" identified by "123456"
+host="localhost"为本地登录用户，host="ip"为ip地址登录，host="%"，为任意远程ip登录
+```
+
+删除用户:
+drop user 'name'@'host';
+
+47. mysql用户授权
+```cpp
+授权test用户拥有所有数据库的某些权限：
+grant select,delete,update,create,drop on *.* to test@"%" identified by "123456";
+
+授予所有权限：
+grant all on *.* to test@"%" identified by "123456";
+
+授权test用户拥有testDB数据库的所有权限（某个数据库的所有权限）：
+grant all privileges on testDB.* to test@localhost identified by '123456';
+
+查看权限
+show grants;
+
+取消权限:
+revoke all on databasename.tablename from 'username'@'host';
+
+刷新(必须)
+flush privileges;
+```
+

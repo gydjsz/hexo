@@ -611,3 +611,79 @@ plt.show()
 
 ![png](output_16_0.png)
 
+# 乱序列表
+
+```python
+import numpy as np
+
+data = np.arange(10)
+print(data)
+
+np.random.shuffle(data)
+print(data)
+```
+输出:
+[0 1 2 3 4 5 6 7 8 9]
+[2 9 6 4 0 7 3 1 8 5]
+
+# format格式化
+
+1. 默认{}和后面format内容对应
+```python
+data = list(range(10))
+print("data = {}".format(data))
+```
+输出:
+data = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+2. 小数格式和填充
+```
+n = 3.1415926
+print("保留2位小数 => {:.2f}".format(n))
+print("带符号保留 => {:+.2f}".format(n))
+print("左边填充0,宽度为10 => {:0>10f}".format(n))
+print("右边填充a, 宽度为10 => {:a<10f}".format(n))
+print("居右 => {:10f}".format(n))
+print("居右 => {:>10f}".format(n))
+print("居左 => {:<10f}".format(n))
+print("居中 => {:^10f}".format(n))
+```
+
+输出：
+保留2位小数 => 3.14
+带符号保留 => +3.14
+左边填充0,宽度为10 => 003.141593
+右边填充a, 宽度为10 => 3.141593aa
+居右 =>   3.141593
+居右 =>   3.141593
+居左 => 3.141593
+居中 =>  3.141593
+
+3. 指定位置，多次使用
+```python
+print("{0},{1},{0}".format(1, 2))
+```
+
+输出：
+1,2,1
+
+4. 字典格式化
+```python
+student = {"name": "张三", "age": 20}
+print("name: {}, age: {}".format(*student)) # 依次填入key
+print("name: {name}, age: {age}".format(**student)) # 根据key填入value
+```
+输出：
+name: name, age: age
+name: 张三, age: 20
+
+5. 元组格式化
+```python
+person = (1, 2, 3)
+print('{}, {}, {}'.format(*person))
+print('{0[0]}, {0[1]}, {0[2]}'.format(person)) # 0是指第一个format的第一个，[]表示元组内的元素索引
+```
+输出：
+1, 2, 3
+1, 2, 3
+
