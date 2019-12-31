@@ -492,29 +492,63 @@ click事件resetLoginForm
 ```
 
 ## 使用axios
-import axios form 'axios'
 
-axios.defaults.baseURL='根路径'
+引入axios进行网络请求，qs对数据格式进行处理
+import axios form 'axios'
+import Qs from 'qs'
+
+axios.defaults.baseURL='http://localhost:8081/user'
 
 Vue.config.$http=axios
+Vue.prototype.$qs = Qs
 
 使用:
 // login是地址，this.loginForm是数据
-this.$http.post('login', this.loginForm)
+this.$http.post('user', this.loginForm)
 
 {data: res} 将post返回数据中的data属性解构出来并保存到res中
 
 状态码为200，表示登录成功
 ```html
-login () {
-      this.$refs.loginFormRef.validate(async valid => {
-        console.log(valid)
-        if (!valid) return
-        const { data: res } = await this.$http.post('login', this.loginForm)
-        if (res.meta.status !== 200) { return console.log('登录失败') }
-        console.log('登录成功')
-		}
+<script>
+export default {
+  created() {
+    this.getData()
+  },
+  data() {
+    return {
+      loginForm: {
+        userName: 'hello',
+        password: 'world'
+      }
+    }
+  },
+  methods: {
+    async getData() {
+      const res = await this.$http.post(
+        'user',
+        this.$qs.stringify(this.loginForm)
+      )
+      console.log(res)
+    }
+  }
 }
+</script>
+```
+
+```html
+async getData() {
+      await this.$http
+        .post('user', this.$qs.stringify(this.loginForm))
+        .then(function(response) {
+          const { data: res } = response
+          console.log(response)
+          console.log(res)
+        })
+        .catch(function(error) {
+          console.log(error)
+        })
+    }
 ```
 
 ## message消息提示
