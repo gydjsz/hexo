@@ -8,6 +8,8 @@ tags:
 
 1. 创建AJAX对象
 
+<!--more-->
+
 ```javascript
 var xhr = new XMLHttpRequest();
 ```
