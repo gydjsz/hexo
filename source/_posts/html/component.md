@@ -8,6 +8,8 @@ tags:
 
 1. 使用Vue.extend来创建一个全局组件
 
+<!--more-->
+
 ```javascript
 var com1 = Vue.extend({
   template: '<h3>使用Vue.extend创建的组件</h3>'
