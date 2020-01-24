@@ -9,8 +9,6 @@ tags:
 + webpack能处理js之间的依赖关系
 + 将较为高级的、浏览器无法识别的语法转化为低级的、浏览器能识别的语法
 
-<!--more-->
-
 # 基本使用
 
 1. 新建文件夹: web
@@ -57,7 +55,7 @@ $(function(){
 })
 ```
 
-+ 安装: cnpm i webpack -g
++ 安装: cnpm i webpack webpack-cli -g
 + 打包: webpack src\main.js -o dist\bundle.js --mode=development 
 
 # 配置文件
@@ -136,6 +134,7 @@ devServer: {
 + 安装cnpm i html-webpack-plugin -D
 
 ```js
+const htmlWebpackPlugin = require('html-webpack-plugin')
 //配置插件的节点
 plugins: [
     // 创建一个在内存中生成html页面的插件
@@ -300,6 +299,413 @@ rules规则
 }
 ```
 
+# vue使用webpack
+
++ 安装vue: cnpm i vue -S
+
+index.html
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <!-- <script src="../dist/bundle.js"></script> -->
+  </head>
+  <body>
+    <div id="app">
+      {{msg}}
+    </div>
+  </body>
+</html>
+```
+
+main.js
+```js
+import Vue from 'vue'
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    msg: 'hello'
+  }
+})
+```
+
+main.js中导入的vue包, 是vue.runtime.common.js
+不是最全的包, 所以需要修改webpack.config.js, 设置vue被导入包的路径
+
+webpack.config.js
+
+需要设置resolve属性使得导入的vue包为vue.js
+
+```js
+resolve: {
+    alias: {
+        "vue$": "vue/dist/vue.js"
+    }
+}
+```
+
+## 使用render函数渲染指定的组件到容器中
+
+1. 安装插件 cnpm i vue-loader vue-template-compiler -D
+
+添加rules规则
+
+```js
+{test: /\.vue$/, use: 'vue-loader'}
+```
+
+2. 配置plugin
+
+webpack.config.js
+```js
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+
+plugins: [
+    new VueLoaderPlugin()
+]
+```
+
+3. main.js和login.vue
+
+main.js
+```js
+import Vue from 'vue'
+import login from './login.vue'
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    msg: 'hello, world'
+    },
+    render: function (creatElements) {
+      return creatElements(login)
+  }
+})
+```
+
+login.vue
+```html
+<template>
+  <div>
+    <h1>登录组件</h1>
+  </div>
+</template>
+```
+
+render属性中的creatElements属性是一个方法, 能将组件模板转化为html
+其结果直接替换el容器
+
+即
+```html
+<div id="app">
+</div>
+```
+
+变为
+```html
+<div>
+    <h1>登录</h1>
+</div>
+```
+
+使用箭头函数
+```js
+render: c => c(login)
+```
+
+## export default和export的使用
+
+1. 使用export default来向外暴露成员
+
+使用export default暴露的成员可以使用任意的变量名接收
+export default只允许暴露一次
+
+login.vue
+```html
+<template>
+  <div>
+    <h1>登录组件{{ msg }}</h1>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      msg: 'hello, world'
+    }
+  },
+  methods: {
+    show() {
+      console.log('login')
+    }
+  }
+}
+</script>
+```
+
+main.js
+
+```js
+import m from './login.vue'
+console.log(m)
+```
+
+2. 使用export
+
+使用export向外暴露的成员, 只能使用{}的形式来接收
+
+可以使用多次
+
+test.js
+
+```js
+export var title = "person"
+```
+
+main.js
+
+```js
+import { title } from "./test.js"
+
+console.log(title)
+```
+
+如果要更改导出的成员名, 可以使用as
+
+```js
+import { title as t } from "./test.js"
+```
+
+## 使用vue-router
+
+1. 安装: cnpm vue-router -S
+2. 导入vue-router
+
+```js
+import VueRouter from 'vue-router'
+Vue.use(VueRouter)
+```
+
+3. 实例化路由
+
+```js
+var router = new VueRouter({
+  routes: [
+    { path: '/account', component: account },
+    {
+      path: '/goodsList',
+      component: goodsList
+    }
+  ]
+})
+```
+
+4. 添加路由
+
+```js
+var app = new Vue({
+  el: '#app',
+  data: {
+    msg: 'hello, world'
+  },
+  render: c => c(main),
+  router
+})
+```
+
+main.js
+
+```js
+import Vue from 'vue'
+import main from './App.vue'
+import VueRouter from 'vue-router'
+import account from './main/Account.vue'
+import goodsList from './main/GoodsList.vue'
+
+Vue.use(VueRouter)
+var router = new VueRouter({
+  routes: [
+    { path: '/account', component: account },
+    {
+      path: '/goodsList',
+      component: goodsList
+    }
+  ]
+})
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    msg: 'hello, world'
+  },
+  render: c => c(main),
+  router
+})
+```
+
+Account.vue
+```html
+<template>
+  <div>
+    <h1>Account</h1>
+  </div>
+</template>
+```
+
+GoodsList.vue
+```html
+<template>
+  <div>
+    <h1>GoodsList</h1>
+  </div>
+</template>
+```
+
+index.html
+```html
+<body>
+  <div id="app"></div>
+</body>
+```
+
+5. 子路由
+
+Login.vue
+```html
+<template>
+    <div>
+        <h1>登录组件</h1>
+    </div>
+</template>
+```
+
+Register.vue
+```html
+<template>
+    <div>
+        <h1>注册组件</h1>
+    </div>
+</template>
+```
+
+Account.vue
+```html
+<template>
+  <div>
+    <h1>Account</h1>
+    <router-link to="/account/login">登录</router-link> 
+    <router-link to="/account/register">注册</router-link> 
+    <router-view></router-view>
+  </div>
+</template>
+```
+
+main.js中添加children
+
+```js
+var router = new VueRouter({
+  routes: [
+    {
+      path: '/account',
+      component: account,
+      children: [
+        {
+          path: 'login',
+          component: login
+        },
+        {
+          path: 'register',
+          component: register
+        }
+      ]
+    },
+    {
+      path: '/goodsList',
+      component: goodsList
+    }
+  ]
+})
+```
+
+## 组件中style标签lang属性和scoped属性
+
+普通的style标签只支持普通的样式, 如果要启用scss或less, 需要为style元素设置lang属性
+
+```html
+<style lang="scss">
+</style>
+```
+
+在style内部写的css是全局的, 可以设置scoped让其变为局部
+
+```html
+<style scoped>
+</style>
+```
+
+## 抽离路由
+
+router.js
+
+```js
+import account from './main/Account.vue'
+import goodsList from './main/GoodsList.vue'
+import login from './childCom/Login.vue'
+import register from './childCom/Register.vue'
+import VueRouter from 'vue-router'
+
+var router = new VueRouter({
+  routes: [
+    {
+      path: '/account',
+      component: account,
+      children: [
+        {
+          path: 'login',
+          component: login
+        },
+        {
+          path: 'register',
+          component: register
+        }
+      ]
+    },
+    {
+      path: '/goodsList',
+      component: goodsList
+    }
+  ]
+})
+
+export default router
+```
+
+main.js
+
+```js
+import Vue from 'vue'
+import main from './App.vue'
+import router from './router.js'
+import VueRouter from 'vue-router'
+
+Vue.use(VueRouter)
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    msg: 'hello, world'
+  },
+  render: c => c(main),
+  router
+})
+```
+
 附:
 
 webpack.config.js
@@ -307,6 +713,7 @@ webpack.config.js
 ```js
 const path = require('path')
 const htmlWebpackPlugin = require('html-webpack-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
   //入口, 表示要使用webpack打包哪个文件
@@ -339,11 +746,15 @@ module.exports = {
       template: path.join(__dirname, './src/index.html'),
       // 指定生成的页面的名称
       filename: 'index.html'
-    })
+    }),
+      new VueLoaderPlugin()
   ],
-  //用于配置所有第三方模块加载器
+  resolve: {
+    alias: {
+        // "vue$": "vue/dist/vue.js"
+    }
+  },
   module: {
-    //所有第三方模块的匹配规则
     rules: [
       //配置.css文件的第三方loader规则
       { test: /\.css$/, use: ['style-loader', 'css-loader'] },
@@ -359,7 +770,9 @@ module.exports = {
       //配置字体文件loader规则
       { test: /\.(ttf|eot|svg|woff|woff2)$/, use: 'url-loader' },
       //配置ES6高级语法loader规则
-      { test: /\.js$/, use: 'babel-loader', exclude: /node_modules/ }
+      { test: /\.js$/, use: 'babel-loader', exclude: /node_modules/ },
+      //配置vue的loader规则
+      { test: /\.vue$/, use: 'vue-loader' }
     ]
   }
 }
