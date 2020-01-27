@@ -67,6 +67,10 @@ array.filter(function(currentValue, index, arr), thisValue)
 + thisValue: 可选, 对象作为该执行回调时使用, 传递给函数, 用作 "this" 的值。
 如果省略了thisValue, "this" 的值为 "undefined"
 
+```js
+var arr = list.filter(x => x === false)
+```
+
 ## padStart和padEnd
 
 + padStart: 在头部补全字符串
@@ -75,6 +79,15 @@ array.filter(function(currentValue, index, arr), thisValue)
 字符串不足两位, 在字符前面补0
 ```javascript
 str.padStart(2, '0')
+```
+
+## findIndex方法
+
+传入一个方法, 返回满足该方法的第一个索引
+
+```js
+var arr = [1, 2, 3, 4, 5]
+const i = arr.findIndex(x => x === 5) // i = 4
 ```
 
 # Timing事件

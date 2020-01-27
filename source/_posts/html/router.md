@@ -343,3 +343,86 @@ routes: [
 </body>
 ```
 
+# 编程式导航
+
+## 路由跳转
+
+```js
+//跳转到某一页
+this.$router.push('地址')
+// n=1 前进一页, n=-1后退一页
+this.$router.go(n)
+```
+
+## 携带参数
+
+1.
+
+```js
+{
+	path: '/home/:id', 
+	name: 'Home',
+	compontent: Home
+}
+```
+
+```js
+this.$router.push({path: /home/${id}})
+```
+
+2. 
+
+```js
+{
+	path: '/home', 
+	name: 'Home',
+	compontent: Home
+}
+```
+
+```js
+this.$router.push({
+	name: 'Home',
+	params: {
+		id: id
+	}
+})
+```
+
+```js
+this.$router.params.id
+```
+
+3. 
+
+```js
+{
+	path: '/home', 
+	name: 'Home',
+	compontent: Home
+}
+```
+
+```js
+this.$router.push({
+	path: '/home',
+	query: {
+		id: id
+	}
+})
+```
+
+```js
+this.$router.params.id
+```
+
+```js
+// 字符串
+this.$router.push('/home')
+// 对象
+this.$router.push({ path: '/home'})
+// 命名的路由
+this.$router.push({ name: '/home'}, params: {userId: 1})
+// 带查询参数
+this.$router.push({ path: '/home'}, query: {userName: 'zs'})
+```
