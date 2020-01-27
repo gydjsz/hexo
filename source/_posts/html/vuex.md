@@ -6,6 +6,8 @@ tags:
 
 通过vuex来进行非父子组件之间的通信
 
+<!--more-->
+
 # 使用state存储变量
 
 1. 安装: cnpm i vuex -S
