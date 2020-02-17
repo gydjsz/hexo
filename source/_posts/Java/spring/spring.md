@@ -8,8 +8,6 @@ tags:
 
 导入依赖
 
-<!--more-->
-
 ```xml
 <dependency>
     <groupId>org.springframework</groupId>
@@ -17,6 +15,8 @@ tags:
     <version>5.2.2.RELEASE</version>
 </dependency>
 ```
+
+<!--more-->
 
 ## 构造函数
 
@@ -57,7 +57,7 @@ bean.xml
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
     <!-- 构造函数注入 -->
-    <bean id="accountService" class="com.ctgu.service.impl.AccountServiceImpl">
+    <bean id="accountService" class="com.ctgu.ssm.service.impl.AccountServiceImpl">
         <constructor-arg name="name" value="zhangsan"></constructor-arg>
         <constructor-arg name="age" value="18"></constructor-arg>
         <constructor-arg name="birthday" ref="now"></constructor-arg>
@@ -81,7 +81,7 @@ public class App {
 
 ```xml
 <!-- set方法注入 -->
-<bean id="accountServiceSet" class="com.ctgu.service.impl.AccountServiceImplSet">
+<bean id="accountServiceSet" class="com.ctgu.ssm.service.impl.AccountServiceImplSet">
     <property name="name" value="test"></property>
     <property name="age" value="18"></property>
     <property name="birthday" ref="now"></property>
@@ -133,7 +133,7 @@ public class AccountServiceImplCon implements IAccountService {
 
 bean.xml
 ```xml
-<bean id="accountServiceCon" class="com.ctgu.service.impl.AccountServiceImplCon">
+<bean id="accountServiceCon" class="com.ctgu.ssm.service.impl.AccountServiceImplCon">
     <property name="myStr">
         <array>
             <value>aaa</value>
@@ -192,7 +192,7 @@ bean.xml
 在bean.xml中配置创建容器时要扫描的包
 
 ```xml
-<context:component-scan base-package="com.ctgu"></context:component-scan>
+<context:component-scan base-package="com.ctgu.ssm></context:component-scan>
 ```
 
 ## 注入数据
@@ -200,6 +200,7 @@ bean.xml
 1. Component
 
 + 作用: 将当前对象放入spring容器中
+
 + 属性: value, 用于指定bean的id. 默认值为当前首字母小写的类名
 
 2. Controller、Service、Repository
@@ -340,7 +341,7 @@ public class AccountServiceImpl implements IAccountService {
 
 ```java
 @Configuration
-@ComponentScan("com.ctgu")
+@ComponentScan("com.ctgu.ssm)
 public class SpringConfiguration{}
 ```
 
@@ -564,7 +565,7 @@ bean.xml
         https://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd">
-    <context:component-scan base-package="com.ctgu"></context:component-scan>
+    <context:component-scan base-package="com.ctgu.ssm></context:component-scan>
     <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 </beans>
 ```
@@ -586,7 +587,7 @@ Aop.java
 public class Aop {
 
     // 定义切点表达式, 为哪些类生成代理对象
-    @Pointcut("execution(* com.ctgu.dao.*.*(..))")
+    @Pointcut("execution(* com.ctgu.ssm.dao.*.*(..))")
     private void myPointCut(){}
 
     // 前置通知: 在执行目标方法之前执行
@@ -750,16 +751,16 @@ bean.xml
         https://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd">
-    <bean id="accountDao" class="com.ctgu.dao.AccountDao"></bean>
+    <bean id="accountDao" class="com.ctgu.ssm.dao.AccountDao"></bean>
 
     <!-- aop配置 -->
-    <bean id="aop" class="com.ctgu.Aop2"></bean>
+    <bean id="aop" class="com.ctgu.ssm.Aop2"></bean>
     <aop:config>
     <!-- 将pointcut写在此处，其他切面可以统一使用 -->
-            <!-- <aop:pointcut id="myPointCut" expression="execution(* com.ctgu.dao.*.*(..))"/> -->
+            <!-- <aop:pointcut id="myPointCut" expression="execution(* com.ctgu.ssm.dao.*.*(..))"/> -->
         <!-- 切面 -->
         <aop:aspect ref="aop">
-            <aop:pointcut id="myPointCut" expression="execution(* com.ctgu.dao.*.*(..))"/>
+            <aop:pointcut id="myPointCut" expression="execution(* com.ctgu.ssm.dao.*.*(..))"/>
             <aop:around method="around" pointcut-ref="myPointCut"/>
             <aop:before method="before" pointcut-ref="myPointCut"/>
             <aop:after-returning method="afterReturning" pointcut-ref="myPointCut"/>
@@ -769,3 +770,4 @@ bean.xml
     </aop:config>
 </beans>
 ```
+

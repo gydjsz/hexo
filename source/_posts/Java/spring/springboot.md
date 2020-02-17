@@ -226,7 +226,7 @@ UserMapper.xml
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ctgu.mapper.UserMapper">
+<mapper namespace="com.ctgu.ssm.mapper.UserMapper">
     <select id="queryUserList" resultType="User">
         select * from user
     </select>
@@ -269,7 +269,7 @@ spring.datasource.username=root
 spring.datasource.password=root
 
 # 整合mybatis
-mybatis.type-aliases-package=com.ctgu.pojo
+mybatis.type-aliases-package=com.ctgu.ssm.pojo
 mybatis.mapper-locations=classpath:mybatis/mapper/*.xml
 ```
 
@@ -277,7 +277,7 @@ mybatis.mapper-locations=classpath:mybatis/mapper/*.xml
 
 如果使用@Repository注解, 则需要配置扫描地址
 ```java
-@MapperScan("com.ctgu.mapper")
+@MapperScan("com.ctgu.ssm.mapper")
 ```
 
 UserMapper.java
@@ -288,16 +288,47 @@ public interface UserMapper {
 }
 ```
 
-App.java
+SpringApplication.java
 ```java
 @SpringBootApplication
-@MapperScan("com.ctgu.mapper")
-public class App {
+@MapperScan("com.ctgu.ssm.mapper")
+public class SpringApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Springboot02Application.class, args);
+        SpringApplication.run(SpringbootApplication.class, args);
     }
 }
+```
+
+数据库和实体类字段不一致时:
+
+1. 方式一
+
+通过@Results注解来进行字段的映射
+```java
+@Mapper
+public interface EmployeeMapper {
+
+    @Select("select * from employee where id = #{id}")
+    @Results(@Result(column = "d_id", property = "dId"))
+    public Employee getEmployeeById(Integer id);
+}
+```
+
+2. 方式二
+
+开启驼峰命名的映射, 数据库为user\_name, 实体类为userName
+
+```properties
+mybatis.configuration.map-underscore-to-camel-case=true
+```
+
+3. 方式三
+
+通过sql语句的别名
+
+```sql
+@Select("select id, lastName, d_id as dId from employee where id = #{id}")
 ```
 
 # SpringSecurity认证与授权
@@ -457,6 +488,135 @@ public class SwaggerConfig {}
 http://localhost:8080/swagger-ui.html
 ```
 
+```java
+@Configuration
+@EnableSwagger2
+public class SwaggerConfig {
+
+    @Bean
+    public Docket docket(){
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo());
+    }
+
+    private ApiInfo apiInfo(){
+        Contact contact = new Contact("gydjsz", "https://gydjsz.top", "1234@qq.com");
+        return new ApiInfo("gydjsz的API", "swagger学习", "v1.0", "https://gydjsz.top/", contact, "Apache 2.0", "http://www.apache.org/licenses/LICENSES-2.0", new ArrayList<> ());
+    }
+}
+```
+
+![](swagger.png)
+
+```java
+return new Docket(DocumentationType.SWAGGER_2)
+        .apiInfo(apiInfo())
+        .select()
+/**
+ * 1. RequestHandlerSelectors.配置要扫描接口的方式
+ *  + basePakckage("com.ctgu.ssm.controller"): 配置要扫描的包
+ *  + any(): 扫描全部
+ *  + none(): 不扫描
+ *  + withClassAnnotation(RestController.class): 扫描类上的注解
+ *  + withMethodAnnotation(RequestMapping.class): 扫描方法上的注解
+ * 2. paths(PathSe)过滤什么路径
+ */
+        .apis(RequestHandlerSelectors.basePackage("com.ctgu.ssm.controller"))
+        .paths(PathSelectors.ant("/hello/**"))
+        .build();
+```
+
+使用enable(flase)来关闭swagger, 可以实现生产环境中启用, 发布时关闭
+```java
+return new Docket(DocumentationType.SWAGGER_2)
+               .apiInfo(apiInfo())
+               // 是否开启swagger
+               .enable(flase)
+               .select()
+               ...
+```
+
+在application.properties中激活dev环境
+application-dev.properties
+```properties
+spring.profiles.active=dev
+```
+
+可以通过修改application.properties的激活环境, 达到是否显示swagger的目的
+```java
+@Bean
+public Docket docket(Environment environment){
+    // 设置要显示swagger的环境
+    Profiles profiles = Profiles.of("dev", "test");
+    // 判断是否处在自己设定的环境中
+    boolean flag = environment.acceptsProfiles(profiles);
+
+    return new Docket(DocumentationType.SWAGGER_2)
+            .apiInfo(apiInfo())
+            .enable(flag)
+            .select()
+            ...
+}
+```
+
+配置API文档分组
+
+```java
+@Configuration
+@EnableSwagger2
+public class SwaggerConfig {
+
+    @Bean
+    public Docket docketA(){
+        return new Docket(DocumentationType.SWAGGER_2).groupName("A");
+    }
+
+    @Bean
+    public Docket docketB(){
+        return new Docket(DocumentationType.SWAGGER_2).groupName("B");
+    }
+}
+```
+
+实体Model
+
+使用Api注解给实体类和属性添加注释
+User.java
+```java
+@ApiModel("用户实体类")
+@Data
+public class User implements Serializable {
+    @ApiModelProperty("用户名")
+    private String username;
+    @ApiModelProperty("密码")
+    private String password;
+}
+```
+
+UserController.java
+```java
+@RestController
+@Api("User控制类")
+public class UserController {
+    @RequestMapping("/user")
+    public User user(){
+        return new User();
+    }
+}
+```
+
+结果:
+![](swaggerModel.png)
+
+使用Api注解给方法和参数添加注释
+```java
+@ApiOperation("User控制类")
+@GetMapping("/userInfo")
+public String userInfo(@ApiParam("用户名") String username) {
+    return username;
+}
+```
+
 # 扩展MVC
 
 实现WebMvcConfigurer接口, 重写相应的方法
@@ -605,3 +765,270 @@ public class DruidConfig {
 
 输入账号密码可以进入管理
 
+# 缓存
+
+## 几个重要概念和缓存注解
+
+|内容|说明|
+|:-:|:-:|
+|Cache|缓存接口, 定义缓存操作. 实现有: RedisCache、EhCache、ConcurrentMapCache|
+|CacheManager|缓存管理器，管理各种缓存组件|
+|@CacheEnable|主要针对方法配置, 能够根据方法的请求参数对其结果进行缓存|
+|@CacheEvict|清空缓存|
+|@CachePut|保证方法被调用, 又希望结果被缓存|
+|@EnableCaching|开启基于注解的缓存|
+|KeyGenerator|缓存数据时key生成策略|
+|serialize|缓存数据时value序列化策略|
+
+## 使用
+
+1. 开启基于注解的缓存
+
+```java
+@EnableCaching
+```
+
+SpringbootApplication.java
+
+```java
+@SpringBootApplication
+@MapperScan("com.ctgu.ssm.mapper")
+@EnableCaching
+public class SpringbootApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(SpringbootApplication.class, args);
+    }
+}
+```
+
+开启日志
+```properties
+logging.level.com.ctgu.ssm.mapper=debug
+```
+
+Employee.java
+```java
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Employee {
+    private Integer id;
+    private String lastName;
+    private String email;
+    private Integer gender;
+    private Integer dId;
+}
+```
+
+EmployeeService.java
+```java
+@Service
+public class EmployeeService {
+    @Resource
+    private EmployeeMapper employeeMapper;
+
+    public Employee getEmployee(Integer id){
+        Employee employee = employeeMapper.getEmployeeById(id);
+        System.out.println(employee);
+        return employee;
+    }
+}
+```
+
+EmployeeController.java
+```java
+@RestController
+public class EmployeeController {
+
+    @Resource
+    private EmployeeService employeeService;
+
+    @GetMapping("/emp/{id}")
+    public Employee getEmployee(@PathVariable("id") Integer id){
+        return employeeService.getEmployee(id);
+    }
+}
+```
+
+2. 标注缓存注解即可
+
+```java
+@Service
+public class EmployeeService {
+    @Resource
+    private EmployeeMapper employeeMapper;
+
+    @Cacheable(value = "emp")
+    public Employee getEmployee(Integer id){
+        Employee employee = employeeMapper.getEmployeeById(id);
+        System.out.println(employee);
+        return employee;
+    }
+
+    @CachePut(value = "emp", key = "#result.id")
+    public Employee updateEmployee(Employee employee){
+        employeeMapper.updateEmployee(employee);
+        return employee;
+    }
+}
+```
+@Cacheable的几个属性:
++ cacheNames/value: 指定缓存组件的名字, 可以指定多个缓存
++ key: 缓存数据使用的key. 用来指定Spring缓存方法的返回结果时对应的key, 默认使用方法的参数
++ keyGenerator: key的生成器, 可以自己指定key的生成器的组件id(key/keyGenerator选择一个) 
++ cacheManager: 缓存管理器
++ cacheResolver: 指定获取解析器(cacheManager/cacheResolver选择一个)
++ condition: 指定符合条件的情况下才缓存(condition = "#id > 0", 当参数id的值大于0时才缓存)
++ unless: 否定缓存. 当unless的条件为true, 就不缓存
++ sync: 是否使用异步模式
+
+Cache SpEL:
+
++ methodName: 当前方法名, #root.methodName
++ method: 当前方法, #root.method.name
++ target: 当前被调用的目标对象, #root.target
++ targetClass: 当前被调用的目标对象类, #root.targetClass
++ args: 当前被调用的方法的参数列表, #root.args[0]
++ caches: 当前方法调用使用的缓存列表, #root.caches[0].name
++ argument name: 方法参数的名字. #参数名, 或#p0、#a0, 0代表参数的索引
++ result: 方法执行后的返回值, #result
+
+### @CachePut
+
+设置cache缓存组件名为emp, 默认key为id的值
+```java
+@Cacheable(value = "emp")
+public Employee getEmployee(Integer id){
+    Employee employee = employeeMapper.getEmployeeById(id);
+    System.out.println(employee);
+    return employee;
+}
+```
+
+另一个方法也设置cache缓存组件名为emp, key为employee.id
+@CachePut注解, 先调用目标方法, 再将目标方法的结果缓存起来
+```java
+@CachePut(value = "emp", key = "#result.id")
+public Employee updateEmployee(Employee employee){
+    employeeMapper.updateEmployee(employee);
+    return employee;
+}
+```
+
+当更新employee的值后, employee的值会被缓存起来, key为其id, 如果调用getEmployee()方法进行查询, 会直接从缓存中根据key查到值, 不会查询数据库
+
+### @CacheEvict
+
+缓存清除
+
+```java
+@CacheEvict(value = "emp")
+public void deleteEmployee(Integer id){
+    employeeMapper.deleteEmployeeById(id);
+}
+```
+
+allEntries = true, 清除所有缓存 
+beforeInvocation = false, 缓存的清除在方法之前执行(默认在方法执行之后)
+
+```java
+@CacheEvict(value = "emp", allEntries = true)
+public void deleteEmployee(Integer id){
+    System.out.println(id);
+    employeeMapper.deleteEmployeeById(id);
+}
+```
+
+### @Caching
+
+通过该注解指定多个缓存参数
+
+```java
+@Caching(
+   cacheable = {
+           @Cacheable(value = "emp", key = "#lastName")
+   },
+   put = {
+           @CachePut(value = "emp", key = "#result.id"),
+           @CachePut(value = "emp", key = "#result.email")
+   }
+)
+public Employee getEmployeeByName(String lastName){
+    return employeeMapper.getEmployeeByLastName(lastName);
+}
+```
+
+### @CacheConfig
+
+指定公共的属性
+
+```java
+@Service
+@CacheConfig(cacheNames = "emp")
+public class EmployeeService {}
+```
+
+# Springboot整合Redis
+
+引入依赖
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-redis</artifactId>
+    <version>1.4.7.RELEASE</version>
+</dependency>
+```
+
+修改redisTemplate默认的序列化规则
+```java
+@Configuration
+public class MyRedisConfig {
+
+    @Bean
+    public RedisTemplate<Object, Employee> redisTemplate(RedisConnectionFactory redisConnectionFactory){
+        RedisTemplate<Object, Employee> template = new RedisTemplate<>();
+        template.setConnectionFactory(redisConnectionFactory);
+        Jackson2JsonRedisSerializer<Employee> serializer = new Jackson2JsonRedisSerializer<Employee>(Employee.class);
+        template.setDefaultSerializer(serializer);
+        return template;
+    }
+}
+```
+
+```java
+@SpringBootTest
+@RunWith(SpringJUnit4ClassRunner.class)
+class Springboot03ApplicationTests {
+
+    @Autowired
+    private EmployeeMapper employeeMapper;
+
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate; // 操作<k, v>都是字符串
+
+    @Autowired
+    private RedisTemplate redisTemplate; // 操作<k,v>都是对象
+
+    // 将传入的对象转化为json
+    @Autowired
+    private RedisTemplate<Object, Employee> redisTemplate2;
+
+    /**
+     * String、List、Set、Hash、ZSet(有序集合)
+     */
+    @Test
+    void testRedis(){
+        stringRedisTemplate.opsForValue().set("msg", "hello");
+        stringRedisTemplate.opsForList().leftPush("d", "world");
+    }
+
+     @Test
+    void testRedis2(){
+        // 保存对象
+        Employee employee = employeeMapper.getEmployeeById(1);
+        redisTemplate2.opsForValue().set("data", employee);
+    }
+}
+```
+待补: RabbitMQ消息、Elasticsearch检索...
