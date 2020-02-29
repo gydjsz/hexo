@@ -499,8 +499,8 @@ import Qs from 'qs'
 
 axios.defaults.baseURL='http://localhost:8081/user'
 
-Vue.config.$http=axios
-Vue.prototype.$qs = Qs
+Vue.config.\$http=axios
+Vue.prototype.\$qs = Qs
 
 使用:
 // login是地址，this.loginForm是数据

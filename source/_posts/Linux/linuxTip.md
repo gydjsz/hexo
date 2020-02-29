@@ -180,3 +180,7 @@ tar -jcvf 打包文件.tar.bz2 被打包的文件
 解压
 tar -jxvf 打包文件.tar.bz2 -C 目标路径
 
+# git
+
+提交后更改文件, 但想追加到上一个提交中
+git commit --amend --no-edit
