@@ -468,7 +468,7 @@ letter-spacing: normal | length
 |normal|默认值,空白会被浏览器忽略|
 |pre|空白会被保留|
 |nowrap|文本不会换行，而是在同一行上继续,直到遇到\<br>标签为止|
-|pre-wrap|保留空白字符序列，但是正常地环行|
+|pre-wrap|保留空白字符序列，但是正常地换行|
 |pre-line|合并空白符序列，但是保留换行符|
 |inherit|从父元素继承属性值|
 
@@ -519,7 +519,18 @@ text-align: left | right | center
 
 ### 纵向对齐
 
-vertical-algin
+vertical-align
+
+```css
+vertical-align: baseline | top | middle | bottom
+```
+
+|值|描述|
+|:-:|:-:|
+|baseline|默认, 元素放置在父元素的基线上|
+|top|把元素的顶端与行中最高元素的顶端对齐|
+|middle|把此元素放置在父元素的中部|
+|bottom|把元素的顶端与行中最低的元素的顶端对齐|
 
 ---
 
