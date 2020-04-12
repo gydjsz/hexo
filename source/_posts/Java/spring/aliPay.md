@@ -423,4 +423,23 @@ ${body}
 
 # 说明
 
-这里使用的是沙箱环境, 正式版需要创建相应的应用, 修改相应的参数即可
+这里使用的是沙箱环境, 正式版需要创建相应的应用, 修改相应的参数即可,
+notifyUrl和returnUrl使用127.0.0.1会失败, 提示是钓鱼网站之类的, 所以
+我这里使用了natapp来进行内网穿透, 生成一个可用的域名
+
+https://natapp.cn/
+
+下载客户端后
+
+在同一目录下编辑文件
+config.ini
+这里的authtoken根据自己的更改, 之后点击运行exe文件即可
+```ini
+[default]
+authtoken=5ts1a1d0863572df
+clienttoken=
+logto=none
+loglevel=DEBUG
+http_proxy=
+```
+
